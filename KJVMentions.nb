@@ -1,0 +1,2653 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     91978,       2644]
+NotebookOptionsPosition[     86514,       2478]
+NotebookOutlinePosition[     86855,       2493]
+CellTagsIndexPosition[     86812,       2490]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Complete KJV.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVPartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "KJVTextDump", "]"}], ",", "7", ",", "1"}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"StephensTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Stephens.txt\>\"", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"KJVFrequencyStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"StephensTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyStephens", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Stephens\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Stephens\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"LincolnTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Lincoln.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"LincolnTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyLincoln", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\[IndentingNewLine]", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.690817369839115*^9, 3.690817413816512*^9}, 
+   3.690817458973027*^9, {3.6908174937815075`*^9, 3.690817548349964*^9}, 
+   3.690825102773946*^9}],
+
+Cell[BoxData["\<\"137 total 7-word references from KJV, with repetition, for \
+Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6908204144415445`*^9}],
+
+Cell[BoxData["\<\"131 total 7-word citations from KJV, discrete mentions, for \
+Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6908204144415445`*^9}],
+
+Cell[BoxData["\<\"2835.5815298 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.690820414442545*^9}],
+
+Cell[BoxData["\<\"99 total 7-word references from KJV, with repetition, for \
+Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.6908346345304728`*^9}],
+
+Cell[BoxData["\<\"91 total 7-word citations from KJV, discrete mentions, for \
+Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.690834634531472*^9}],
+
+Cell[BoxData["\<\"14220.5569746 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6908346345324726`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"637632", ",", "637633"}], "}"}]], "Output",
+ CellChangeTimes->{3.69083463460948*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"KJVPartitioned", "[", 
+  RowBox[{"[", 
+   RowBox[{"637632", ";;", "637633"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908857118373404`*^9, 3.6908857386284113`*^9}, {
+  3.6908867025059967`*^9, 3.690886705601684*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"Sufficient\"\>", ",", "\<\"unto\"\>", ",", "\<\"the\"\>", 
+     ",", "\<\"day\"\>", ",", "\<\"is\"\>", ",", "\<\"the\"\>", 
+     ",", "\<\"evil\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"unto\"\>", ",", "\<\"the\"\>", ",", "\<\"day\"\>", 
+     ",", "\<\"is\"\>", ",", "\<\"the\"\>", ",", "\<\"evil\"\>", 
+     ",", "\<\"thereof.\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.690885725557889*^9, 3.6908857398284597`*^9}, 
+   3.690886706444731*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908867249563274`*^9, 3.690886725698371*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1242", "}"}], ",", 
+   RowBox[{"{", "1243", "}"}], ",", 
+   RowBox[{"{", "1244", "}"}], ",", 
+   RowBox[{"{", "1245", "}"}], ",", 
+   RowBox[{"{", "1246", "}"}], ",", 
+   RowBox[{"{", "1249", "}"}], ",", 
+   RowBox[{"{", "1250", "}"}], ",", 
+   RowBox[{"{", "1251", "}"}], ",", 
+   RowBox[{"{", "7868", "}"}], ",", 
+   RowBox[{"{", "9978", "}"}], ",", 
+   RowBox[{"{", "9979", "}"}], ",", 
+   RowBox[{"{", "9980", "}"}], ",", 
+   RowBox[{"{", "9981", "}"}], ",", 
+   RowBox[{"{", "9982", "}"}], ",", 
+   RowBox[{"{", "9983", "}"}], ",", 
+   RowBox[{"{", "9984", "}"}], ",", 
+   RowBox[{"{", "9985", "}"}], ",", 
+   RowBox[{"{", "9986", "}"}], ",", 
+   RowBox[{"{", "9997", "}"}], ",", 
+   RowBox[{"{", "9998", "}"}], ",", 
+   RowBox[{"{", "9999", "}"}], ",", 
+   RowBox[{"{", "96543", "}"}], ",", 
+   RowBox[{"{", "96544", "}"}], ",", 
+   RowBox[{"{", "96545", "}"}], ",", 
+   RowBox[{"{", "96546", "}"}], ",", 
+   RowBox[{"{", "96553", "}"}], ",", 
+   RowBox[{"{", "96554", "}"}], ",", 
+   RowBox[{"{", "96555", "}"}], ",", 
+   RowBox[{"{", "96573", "}"}], ",", 
+   RowBox[{"{", "96574", "}"}], ",", 
+   RowBox[{"{", "96575", "}"}], ",", 
+   RowBox[{"{", "96576", "}"}], ",", 
+   RowBox[{"{", "96589", "}"}], ",", 
+   RowBox[{"{", "96590", "}"}], ",", 
+   RowBox[{"{", "96591", "}"}], ",", 
+   RowBox[{"{", "96610", "}"}], ",", 
+   RowBox[{"{", "96611", "}"}], ",", 
+   RowBox[{"{", "96612", "}"}], ",", 
+   RowBox[{"{", "96613", "}"}], ",", 
+   RowBox[{"{", "96614", "}"}], ",", 
+   RowBox[{"{", "96615", "}"}], ",", 
+   RowBox[{"{", "243616", "}"}], ",", 
+   RowBox[{"{", "251446", "}"}], ",", 
+   RowBox[{"{", "281749", "}"}], ",", 
+   RowBox[{"{", "281750", "}"}], ",", 
+   RowBox[{"{", "281751", "}"}], ",", 
+   RowBox[{"{", "372040", "}"}], ",", 
+   RowBox[{"{", "372041", "}"}], ",", 
+   RowBox[{"{", "460711", "}"}], ",", 
+   RowBox[{"{", "460712", "}"}], ",", 
+   RowBox[{"{", "466826", "}"}], ",", 
+   RowBox[{"{", "466827", "}"}], ",", 
+   RowBox[{"{", "503532", "}"}], ",", 
+   RowBox[{"{", "503533", "}"}], ",", 
+   RowBox[{"{", "503534", "}"}], ",", 
+   RowBox[{"{", "503535", "}"}], ",", 
+   RowBox[{"{", "503741", "}"}], ",", 
+   RowBox[{"{", "503742", "}"}], ",", 
+   RowBox[{"{", "503743", "}"}], ",", 
+   RowBox[{"{", "503744", "}"}], ",", 
+   RowBox[{"{", "538893", "}"}], ",", 
+   RowBox[{"{", "637632", "}"}], ",", 
+   RowBox[{"{", "637633", "}"}], ",", 
+   RowBox[{"{", "637642", "}"}], ",", 
+   RowBox[{"{", "637797", "}"}], ",", 
+   RowBox[{"{", "638513", "}"}], ",", 
+   RowBox[{"{", "638525", "}"}], ",", 
+   RowBox[{"{", "638526", "}"}], ",", 
+   RowBox[{"{", "638527", "}"}], ",", 
+   RowBox[{"{", "638528", "}"}], ",", 
+   RowBox[{"{", "638529", "}"}], ",", 
+   RowBox[{"{", "638530", "}"}], ",", 
+   RowBox[{"{", "638531", "}"}], ",", 
+   RowBox[{"{", "638532", "}"}], ",", 
+   RowBox[{"{", "638533", "}"}], ",", 
+   RowBox[{"{", "638555", "}"}], ",", 
+   RowBox[{"{", "638556", "}"}], ",", 
+   RowBox[{"{", "638557", "}"}], ",", 
+   RowBox[{"{", "638558", "}"}], ",", 
+   RowBox[{"{", "638559", "}"}], ",", 
+   RowBox[{"{", "638568", "}"}], ",", 
+   RowBox[{"{", "638569", "}"}], ",", 
+   RowBox[{"{", "638586", "}"}], ",", 
+   RowBox[{"{", "638587", "}"}], ",", 
+   RowBox[{"{", "638588", "}"}], ",", 
+   RowBox[{"{", "642427", "}"}], ",", 
+   RowBox[{"{", "642428", "}"}], ",", 
+   RowBox[{"{", "642429", "}"}], ",", 
+   RowBox[{"{", "642430", "}"}], ",", 
+   RowBox[{"{", "651154", "}"}], ",", 
+   RowBox[{"{", "651155", "}"}], ",", 
+   RowBox[{"{", "652557", "}"}], ",", 
+   RowBox[{"{", "652565", "}"}], ",", 
+   RowBox[{"{", "652566", "}"}], ",", 
+   RowBox[{"{", "652567", "}"}], ",", 
+   RowBox[{"{", "652574", "}"}], ",", 
+   RowBox[{"{", "652575", "}"}], ",", 
+   RowBox[{"{", "652576", "}"}], ",", 
+   RowBox[{"{", "652577", "}"}], ",", 
+   RowBox[{"{", "653715", "}"}], ",", 
+   RowBox[{"{", "653716", "}"}], ",", 
+   RowBox[{"{", "654363", "}"}], ",", 
+   RowBox[{"{", "654364", "}"}], ",", 
+   RowBox[{"{", "681631", "}"}], ",", 
+   RowBox[{"{", "686947", "}"}], ",", 
+   RowBox[{"{", "690221", "}"}], ",", 
+   RowBox[{"{", "690222", "}"}], ",", 
+   RowBox[{"{", "690398", "}"}], ",", 
+   RowBox[{"{", "690399", "}"}], ",", 
+   RowBox[{"{", "690400", "}"}], ",", 
+   RowBox[{"{", "705602", "}"}], ",", 
+   RowBox[{"{", "705603", "}"}], ",", 
+   RowBox[{"{", "705604", "}"}], ",", 
+   RowBox[{"{", "705617", "}"}], ",", 
+   RowBox[{"{", "705618", "}"}], ",", 
+   RowBox[{"{", "705619", "}"}], ",", 
+   RowBox[{"{", "705627", "}"}], ",", 
+   RowBox[{"{", "705628", "}"}], ",", 
+   RowBox[{"{", "705630", "}"}], ",", 
+   RowBox[{"{", "712057", "}"}], ",", 
+   RowBox[{"{", "741630", "}"}], ",", 
+   RowBox[{"{", "741631", "}"}], ",", 
+   RowBox[{"{", "741632", "}"}], ",", 
+   RowBox[{"{", "741633", "}"}], ",", 
+   RowBox[{"{", "760276", "}"}], ",", 
+   RowBox[{"{", "760277", "}"}], ",", 
+   RowBox[{"{", "774798", "}"}], ",", 
+   RowBox[{"{", "774810", "}"}], ",", 
+   RowBox[{"{", "774865", "}"}], ",", 
+   RowBox[{"{", "774866", "}"}], ",", 
+   RowBox[{"{", "774904", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6908867273679686`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.690886740598745*^9, 3.690886741827313*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "2045", "}"}], ",", 
+   RowBox[{"{", "2046", "}"}], ",", 
+   RowBox[{"{", "2047", "}"}], ",", 
+   RowBox[{"{", "2048", "}"}], ",", 
+   RowBox[{"{", "2746", "}"}], ",", 
+   RowBox[{"{", "2747", "}"}], ",", 
+   RowBox[{"{", "13231", "}"}], ",", 
+   RowBox[{"{", "13821", "}"}], ",", 
+   RowBox[{"{", "50732", "}"}], ",", 
+   RowBox[{"{", "50733", "}"}], ",", 
+   RowBox[{"{", "50734", "}"}], ",", 
+   RowBox[{"{", "51361", "}"}], ",", 
+   RowBox[{"{", "51362", "}"}], ",", 
+   RowBox[{"{", "51363", "}"}], ",", 
+   RowBox[{"{", "51863", "}"}], ",", 
+   RowBox[{"{", "51864", "}"}], ",", 
+   RowBox[{"{", "51865", "}"}], ",", 
+   RowBox[{"{", "68998", "}"}], ",", 
+   RowBox[{"{", "140978", "}"}], ",", 
+   RowBox[{"{", "140979", "}"}], ",", 
+   RowBox[{"{", "140980", "}"}], ",", 
+   RowBox[{"{", "175773", "}"}], ",", 
+   RowBox[{"{", "332851", "}"}], ",", 
+   RowBox[{"{", "332852", "}"}], ",", 
+   RowBox[{"{", "350183", "}"}], ",", 
+   RowBox[{"{", "545239", "}"}], ",", 
+   RowBox[{"{", "545240", "}"}], ",", 
+   RowBox[{"{", "545241", "}"}], ",", 
+   RowBox[{"{", "545242", "}"}], ",", 
+   RowBox[{"{", "545243", "}"}], ",", 
+   RowBox[{"{", "568397", "}"}], ",", 
+   RowBox[{"{", "598938", "}"}], ",", 
+   RowBox[{"{", "598939", "}"}], ",", 
+   RowBox[{"{", "598940", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "609043", "}"}], ",", 
+   RowBox[{"{", "609044", "}"}], ",", 
+   RowBox[{"{", "609045", "}"}], ",", 
+   RowBox[{"{", "613016", "}"}], ",", 
+   RowBox[{"{", "613017", "}"}], ",", 
+   RowBox[{"{", "613018", "}"}], ",", 
+   RowBox[{"{", "616384", "}"}], ",", 
+   RowBox[{"{", "621435", "}"}], ",", 
+   RowBox[{"{", "622277", "}"}], ",", 
+   RowBox[{"{", "629253", "}"}], ",", 
+   RowBox[{"{", "629254", "}"}], ",", 
+   RowBox[{"{", "629255", "}"}], ",", 
+   RowBox[{"{", "637632", "}"}], ",", 
+   RowBox[{"{", "637633", "}"}], ",", 
+   RowBox[{"{", "637896", "}"}], ",", 
+   RowBox[{"{", "637897", "}"}], ",", 
+   RowBox[{"{", "637898", "}"}], ",", 
+   RowBox[{"{", "646288", "}"}], ",", 
+   RowBox[{"{", "646289", "}"}], ",", 
+   RowBox[{"{", "646290", "}"}], ",", 
+   RowBox[{"{", "647370", "}"}], ",", 
+   RowBox[{"{", "647371", "}"}], ",", 
+   RowBox[{"{", "647372", "}"}], ",", 
+   RowBox[{"{", "647373", "}"}], ",", 
+   RowBox[{"{", "647374", "}"}], ",", 
+   RowBox[{"{", "647375", "}"}], ",", 
+   RowBox[{"{", "647376", "}"}], ",", 
+   RowBox[{"{", "647377", "}"}], ",", 
+   RowBox[{"{", "647378", "}"}], ",", 
+   RowBox[{"{", "647379", "}"}], ",", 
+   RowBox[{"{", "647380", "}"}], ",", 
+   RowBox[{"{", "647381", "}"}], ",", 
+   RowBox[{"{", "647382", "}"}], ",", 
+   RowBox[{"{", "647383", "}"}], ",", 
+   RowBox[{"{", "647384", "}"}], ",", 
+   RowBox[{"{", "647385", "}"}], ",", 
+   RowBox[{"{", "647386", "}"}], ",", 
+   RowBox[{"{", "647387", "}"}], ",", 
+   RowBox[{"{", "647388", "}"}], ",", 
+   RowBox[{"{", "653500", "}"}], ",", 
+   RowBox[{"{", "671604", "}"}], ",", 
+   RowBox[{"{", "671605", "}"}], ",", 
+   RowBox[{"{", "680860", "}"}], ",", 
+   RowBox[{"{", "680861", "}"}], ",", 
+   RowBox[{"{", "691437", "}"}], ",", 
+   RowBox[{"{", "691445", "}"}], ",", 
+   RowBox[{"{", "692831", "}"}], ",", 
+   RowBox[{"{", "692832", "}"}], ",", 
+   RowBox[{"{", "692839", "}"}], ",", 
+   RowBox[{"{", "692840", "}"}], ",", 
+   RowBox[{"{", "692841", "}"}], ",", 
+   RowBox[{"{", "692842", "}"}], ",", 
+   RowBox[{"{", "692843", "}"}], ",", 
+   RowBox[{"{", "776629", "}"}], ",", 
+   RowBox[{"{", "785292", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.690886743085388*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SumnerTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Sumner.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencySumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SumnerTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsSumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencySumner", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencySumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for Sumner\>\""}], \
+"\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsSumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Sumner\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6908867852373548`*^9, 3.690886785790388*^9}, {
+   3.6908922707369785`*^9, 3.6908922882937336`*^9}, 3.690892331842088*^9, {
+   3.69089243367327*^9, 3.6908924545233555`*^9}}],
+
+Cell[BoxData["45360920"], "Output",
+ CellChangeTimes->{3.6908924715300555`*^9}],
+
+Cell[BoxData["\<\"326 total 7-word references from KJV, with repetition, for \
+Sumner\"\>"], "Output",
+ CellChangeTimes->{3.6909079876521206`*^9}],
+
+Cell[BoxData["\<\"305 total 7-word citations from KJV, discrete mentions, for \
+Sumner\"\>"], "Output",
+ CellChangeTimes->{3.6909079876621213`*^9}],
+
+Cell[BoxData["\<\"15515.9930615 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6909079876621213`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.690907987692122*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "605721", ",", "605722", ",", "637896", ",", "637897", ",", "637898", ",", 
+   "680860", ",", "680861"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909079878121257`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909258039341216`*^9, 3.6909258051901217`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "205", "}"}], ",", 
+   RowBox[{"{", "609", "}"}], ",", 
+   RowBox[{"{", "630", "}"}], ",", 
+   RowBox[{"{", "657", "}"}], ",", 
+   RowBox[{"{", "658", "}"}], ",", 
+   RowBox[{"{", "665", "}"}], ",", 
+   RowBox[{"{", "709", "}"}], ",", 
+   RowBox[{"{", "717", "}"}], ",", 
+   RowBox[{"{", "718", "}"}], ",", 
+   RowBox[{"{", "719", "}"}], ",", 
+   RowBox[{"{", "5874", "}"}], ",", 
+   RowBox[{"{", "5875", "}"}], ",", 
+   RowBox[{"{", "13752", "}"}], ",", 
+   RowBox[{"{", "13753", "}"}], ",", 
+   RowBox[{"{", "14322", "}"}], ",", 
+   RowBox[{"{", "14323", "}"}], ",", 
+   RowBox[{"{", "16402", "}"}], ",", 
+   RowBox[{"{", "16403", "}"}], ",", 
+   RowBox[{"{", "17055", "}"}], ",", 
+   RowBox[{"{", "29663", "}"}], ",", 
+   RowBox[{"{", "29664", "}"}], ",", 
+   RowBox[{"{", "30153", "}"}], ",", 
+   RowBox[{"{", "30154", "}"}], ",", 
+   RowBox[{"{", "37675", "}"}], ",", 
+   RowBox[{"{", "37676", "}"}], ",", 
+   RowBox[{"{", "40617", "}"}], ",", 
+   RowBox[{"{", "40618", "}"}], ",", 
+   RowBox[{"{", "41636", "}"}], ",", 
+   RowBox[{"{", "49794", "}"}], ",", 
+   RowBox[{"{", "51199", "}"}], ",", 
+   RowBox[{"{", "51200", "}"}], ",", 
+   RowBox[{"{", "56119", "}"}], ",", 
+   RowBox[{"{", "67265", "}"}], ",", 
+   RowBox[{"{", "67266", "}"}], ",", 
+   RowBox[{"{", "67267", "}"}], ",", 
+   RowBox[{"{", "88434", "}"}], ",", 
+   RowBox[{"{", "121162", "}"}], ",", 
+   RowBox[{"{", "121163", "}"}], ",", 
+   RowBox[{"{", "123558", "}"}], ",", 
+   RowBox[{"{", "139123", "}"}], ",", 
+   RowBox[{"{", "139124", "}"}], ",", 
+   RowBox[{"{", "147755", "}"}], ",", 
+   RowBox[{"{", "147756", "}"}], ",", 
+   RowBox[{"{", "147757", "}"}], ",", 
+   RowBox[{"{", "148534", "}"}], ",", 
+   RowBox[{"{", "152570", "}"}], ",", 
+   RowBox[{"{", "152571", "}"}], ",", 
+   RowBox[{"{", "152572", "}"}], ",", 
+   RowBox[{"{", "152573", "}"}], ",", 
+   RowBox[{"{", "155914", "}"}], ",", 
+   RowBox[{"{", "155915", "}"}], ",", 
+   RowBox[{"{", "157487", "}"}], ",", 
+   RowBox[{"{", "157514", "}"}], ",", 
+   RowBox[{"{", "157523", "}"}], ",", 
+   RowBox[{"{", "163021", "}"}], ",", 
+   RowBox[{"{", "163022", "}"}], ",", 
+   RowBox[{"{", "180869", "}"}], ",", 
+   RowBox[{"{", "182165", "}"}], ",", 
+   RowBox[{"{", "182166", "}"}], ",", 
+   RowBox[{"{", "186268", "}"}], ",", 
+   RowBox[{"{", "198547", "}"}], ",", 
+   RowBox[{"{", "198548", "}"}], ",", 
+   RowBox[{"{", "206103", "}"}], ",", 
+   RowBox[{"{", "214391", "}"}], ",", 
+   RowBox[{"{", "214398", "}"}], ",", 
+   RowBox[{"{", "214399", "}"}], ",", 
+   RowBox[{"{", "225196", "}"}], ",", 
+   RowBox[{"{", "225197", "}"}], ",", 
+   RowBox[{"{", "234952", "}"}], ",", 
+   RowBox[{"{", "238660", "}"}], ",", 
+   RowBox[{"{", "238661", "}"}], ",", 
+   RowBox[{"{", "268043", "}"}], ",", 
+   RowBox[{"{", "268044", "}"}], ",", 
+   RowBox[{"{", "272016", "}"}], ",", 
+   RowBox[{"{", "272017", "}"}], ",", 
+   RowBox[{"{", "272055", "}"}], ",", 
+   RowBox[{"{", "272056", "}"}], ",", 
+   RowBox[{"{", "272057", "}"}], ",", 
+   RowBox[{"{", "272058", "}"}], ",", 
+   RowBox[{"{", "272072", "}"}], ",", 
+   RowBox[{"{", "272073", "}"}], ",", 
+   RowBox[{"{", "272074", "}"}], ",", 
+   RowBox[{"{", "272075", "}"}], ",", 
+   RowBox[{"{", "272076", "}"}], ",", 
+   RowBox[{"{", "272093", "}"}], ",", 
+   RowBox[{"{", "272094", "}"}], ",", 
+   RowBox[{"{", "272115", "}"}], ",", 
+   RowBox[{"{", "272116", "}"}], ",", 
+   RowBox[{"{", "294984", "}"}], ",", 
+   RowBox[{"{", "294985", "}"}], ",", 
+   RowBox[{"{", "331377", "}"}], ",", 
+   RowBox[{"{", "343906", "}"}], ",", 
+   RowBox[{"{", "380812", "}"}], ",", 
+   RowBox[{"{", "380813", "}"}], ",", 
+   RowBox[{"{", "381502", "}"}], ",", 
+   RowBox[{"{", "381519", "}"}], ",", 
+   RowBox[{"{", "381520", "}"}], ",", 
+   RowBox[{"{", "381521", "}"}], ",", 
+   RowBox[{"{", "381529", "}"}], ",", 
+   RowBox[{"{", "381548", "}"}], ",", 
+   RowBox[{"{", "412335", "}"}], ",", 
+   RowBox[{"{", "412336", "}"}], ",", 
+   RowBox[{"{", "412345", "}"}], ",", 
+   RowBox[{"{", "421039", "}"}], ",", 
+   RowBox[{"{", "428755", "}"}], ",", 
+   RowBox[{"{", "428756", "}"}], ",", 
+   RowBox[{"{", "428764", "}"}], ",", 
+   RowBox[{"{", "428765", "}"}], ",", 
+   RowBox[{"{", "469072", "}"}], ",", 
+   RowBox[{"{", "469073", "}"}], ",", 
+   RowBox[{"{", "469081", "}"}], ",", 
+   RowBox[{"{", "469082", "}"}], ",", 
+   RowBox[{"{", "469083", "}"}], ",", 
+   RowBox[{"{", "469084", "}"}], ",", 
+   RowBox[{"{", "469085", "}"}], ",", 
+   RowBox[{"{", "473257", "}"}], ",", 
+   RowBox[{"{", "473258", "}"}], ",", 
+   RowBox[{"{", "473271", "}"}], ",", 
+   RowBox[{"{", "473272", "}"}], ",", 
+   RowBox[{"{", "473273", "}"}], ",", 
+   RowBox[{"{", "473274", "}"}], ",", 
+   RowBox[{"{", "473367", "}"}], ",", 
+   RowBox[{"{", "473368", "}"}], ",", 
+   RowBox[{"{", "477261", "}"}], ",", 
+   RowBox[{"{", "486481", "}"}], ",", 
+   RowBox[{"{", "486539", "}"}], ",", 
+   RowBox[{"{", "486540", "}"}], ",", 
+   RowBox[{"{", "490189", "}"}], ",", 
+   RowBox[{"{", "490196", "}"}], ",", 
+   RowBox[{"{", "490220", "}"}], ",", 
+   RowBox[{"{", "490221", "}"}], ",", 
+   RowBox[{"{", "490286", "}"}], ",", 
+   RowBox[{"{", "490287", "}"}], ",", 
+   RowBox[{"{", "490308", "}"}], ",", 
+   RowBox[{"{", "490309", "}"}], ",", 
+   RowBox[{"{", "490310", "}"}], ",", 
+   RowBox[{"{", "490311", "}"}], ",", 
+   RowBox[{"{", "490331", "}"}], ",", 
+   RowBox[{"{", "490332", "}"}], ",", 
+   RowBox[{"{", "497540", "}"}], ",", 
+   RowBox[{"{", "566451", "}"}], ",", 
+   RowBox[{"{", "566452", "}"}], ",", 
+   RowBox[{"{", "566453", "}"}], ",", 
+   RowBox[{"{", "566454", "}"}], ",", 
+   RowBox[{"{", "568400", "}"}], ",", 
+   RowBox[{"{", "579010", "}"}], ",", 
+   RowBox[{"{", "579011", "}"}], ",", 
+   RowBox[{"{", "579012", "}"}], ",", 
+   RowBox[{"{", "579013", "}"}], ",", 
+   RowBox[{"{", "584977", "}"}], ",", 
+   RowBox[{"{", "584978", "}"}], ",", 
+   RowBox[{"{", "584979", "}"}], ",", 
+   RowBox[{"{", "599865", "}"}], ",", 
+   RowBox[{"{", "599866", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "606133", "}"}], ",", 
+   RowBox[{"{", "619577", "}"}], ",", 
+   RowBox[{"{", "619578", "}"}], ",", 
+   RowBox[{"{", "619579", "}"}], ",", 
+   RowBox[{"{", "623373", "}"}], ",", 
+   RowBox[{"{", "628771", "}"}], ",", 
+   RowBox[{"{", "628772", "}"}], ",", 
+   RowBox[{"{", "636011", "}"}], ",", 
+   RowBox[{"{", "636012", "}"}], ",", 
+   RowBox[{"{", "636043", "}"}], ",", 
+   RowBox[{"{", "636044", "}"}], ",", 
+   RowBox[{"{", "636700", "}"}], ",", 
+   RowBox[{"{", "637455", "}"}], ",", 
+   RowBox[{"{", "637456", "}"}], ",", 
+   RowBox[{"{", "637457", "}"}], ",", 
+   RowBox[{"{", "637458", "}"}], ",", 
+   RowBox[{"{", "637894", "}"}], ",", 
+   RowBox[{"{", "637895", "}"}], ",", 
+   RowBox[{"{", "637896", "}"}], ",", 
+   RowBox[{"{", "637897", "}"}], ",", 
+   RowBox[{"{", "637898", "}"}], ",", 
+   RowBox[{"{", "637911", "}"}], ",", 
+   RowBox[{"{", "637912", "}"}], ",", 
+   RowBox[{"{", "643652", "}"}], ",", 
+   RowBox[{"{", "643653", "}"}], ",", 
+   RowBox[{"{", "648492", "}"}], ",", 
+   RowBox[{"{", "649228", "}"}], ",", 
+   RowBox[{"{", "649229", "}"}], ",", 
+   RowBox[{"{", "651644", "}"}], ",", 
+   RowBox[{"{", "652033", "}"}], ",", 
+   RowBox[{"{", "652034", "}"}], ",", 
+   RowBox[{"{", "652035", "}"}], ",", 
+   RowBox[{"{", "652334", "}"}], ",", 
+   RowBox[{"{", "655490", "}"}], ",", 
+   RowBox[{"{", "655491", "}"}], ",", 
+   RowBox[{"{", "655492", "}"}], ",", 
+   RowBox[{"{", "655921", "}"}], ",", 
+   RowBox[{"{", "655923", "}"}], ",", 
+   RowBox[{"{", "655924", "}"}], ",", 
+   RowBox[{"{", "656326", "}"}], ",", 
+   RowBox[{"{", "656348", "}"}], ",", 
+   RowBox[{"{", "656349", "}"}], ",", 
+   RowBox[{"{", "656350", "}"}], ",", 
+   RowBox[{"{", "656351", "}"}], ",", 
+   RowBox[{"{", "656352", "}"}], ",", 
+   RowBox[{"{", "656361", "}"}], ",", 
+   RowBox[{"{", "656377", "}"}], ",", 
+   RowBox[{"{", "656391", "}"}], ",", 
+   RowBox[{"{", "656392", "}"}], ",", 
+   RowBox[{"{", "656393", "}"}], ",", 
+   RowBox[{"{", "656394", "}"}], ",", 
+   RowBox[{"{", "656395", "}"}], ",", 
+   RowBox[{"{", "656406", "}"}], ",", 
+   RowBox[{"{", "656407", "}"}], ",", 
+   RowBox[{"{", "656419", "}"}], ",", 
+   RowBox[{"{", "656420", "}"}], ",", 
+   RowBox[{"{", "656450", "}"}], ",", 
+   RowBox[{"{", "656451", "}"}], ",", 
+   RowBox[{"{", "656452", "}"}], ",", 
+   RowBox[{"{", "658326", "}"}], ",", 
+   RowBox[{"{", "658514", "}"}], ",", 
+   RowBox[{"{", "658515", "}"}], ",", 
+   RowBox[{"{", "661288", "}"}], ",", 
+   RowBox[{"{", "664482", "}"}], ",", 
+   RowBox[{"{", "675869", "}"}], ",", 
+   RowBox[{"{", "675870", "}"}], ",", 
+   RowBox[{"{", "675877", "}"}], ",", 
+   RowBox[{"{", "675878", "}"}], ",", 
+   RowBox[{"{", "675879", "}"}], ",", 
+   RowBox[{"{", "675880", "}"}], ",", 
+   RowBox[{"{", "680431", "}"}], ",", 
+   RowBox[{"{", "680432", "}"}], ",", 
+   RowBox[{"{", "680860", "}"}], ",", 
+   RowBox[{"{", "680861", "}"}], ",", 
+   RowBox[{"{", "698848", "}"}], ",", 
+   RowBox[{"{", "698849", "}"}], ",", 
+   RowBox[{"{", "698850", "}"}], ",", 
+   RowBox[{"{", "699744", "}"}], ",", 
+   RowBox[{"{", "702357", "}"}], ",", 
+   RowBox[{"{", "702358", "}"}], ",", 
+   RowBox[{"{", "702359", "}"}], ",", 
+   RowBox[{"{", "702360", "}"}], ",", 
+   RowBox[{"{", "709395", "}"}], ",", 
+   RowBox[{"{", "709396", "}"}], ",", 
+   RowBox[{"{", "716717", "}"}], ",", 
+   RowBox[{"{", "716718", "}"}], ",", 
+   RowBox[{"{", "716719", "}"}], ",", 
+   RowBox[{"{", "716725", "}"}], ",", 
+   RowBox[{"{", "716726", "}"}], ",", 
+   RowBox[{"{", "716727", "}"}], ",", 
+   RowBox[{"{", "716728", "}"}], ",", 
+   RowBox[{"{", "716729", "}"}], ",", 
+   RowBox[{"{", "721321", "}"}], ",", 
+   RowBox[{"{", "721336", "}"}], ",", 
+   RowBox[{"{", "721337", "}"}], ",", 
+   RowBox[{"{", "721338", "}"}], ",", 
+   RowBox[{"{", "721339", "}"}], ",", 
+   RowBox[{"{", "721340", "}"}], ",", 
+   RowBox[{"{", "721429", "}"}], ",", 
+   RowBox[{"{", "727407", "}"}], ",", 
+   RowBox[{"{", "727418", "}"}], ",", 
+   RowBox[{"{", "727419", "}"}], ",", 
+   RowBox[{"{", "733908", "}"}], ",", 
+   RowBox[{"{", "733909", "}"}], ",", 
+   RowBox[{"{", "733910", "}"}], ",", 
+   RowBox[{"{", "743508", "}"}], ",", 
+   RowBox[{"{", "744886", "}"}], ",", 
+   RowBox[{"{", "752210", "}"}], ",", 
+   RowBox[{"{", "752211", "}"}], ",", 
+   RowBox[{"{", "752212", "}"}], ",", 
+   RowBox[{"{", "752213", "}"}], ",", 
+   RowBox[{"{", "758551", "}"}], ",", 
+   RowBox[{"{", "758552", "}"}], ",", 
+   RowBox[{"{", "758553", "}"}], ",", 
+   RowBox[{"{", "758554", "}"}], ",", 
+   RowBox[{"{", "760808", "}"}], ",", 
+   RowBox[{"{", "760809", "}"}], ",", 
+   RowBox[{"{", "761617", "}"}], ",", 
+   RowBox[{"{", "769508", "}"}], ",", 
+   RowBox[{"{", "769509", "}"}], ",", 
+   RowBox[{"{", "773097", "}"}], ",", 
+   RowBox[{"{", "778170", "}"}], ",", 
+   RowBox[{"{", "778171", "}"}], ",", 
+   RowBox[{"{", "778178", "}"}], ",", 
+   RowBox[{"{", "778202", "}"}], ",", 
+   RowBox[{"{", "778214", "}"}], ",", 
+   RowBox[{"{", "778215", "}"}], ",", 
+   RowBox[{"{", "778216", "}"}], ",", 
+   RowBox[{"{", "778217", "}"}], ",", 
+   RowBox[{"{", "778226", "}"}], ",", 
+   RowBox[{"{", "778237", "}"}], ",", 
+   RowBox[{"{", "778238", "}"}], ",", 
+   RowBox[{"{", "778250", "}"}], ",", 
+   RowBox[{"{", "778251", "}"}], ",", 
+   RowBox[{"{", "778252", "}"}], ",", 
+   RowBox[{"{", "778285", "}"}], ",", 
+   RowBox[{"{", "778322", "}"}], ",", 
+   RowBox[{"{", "778323", "}"}], ",", 
+   RowBox[{"{", "778334", "}"}], ",", 
+   RowBox[{"{", "778335", "}"}], ",", 
+   RowBox[{"{", "778336", "}"}], ",", 
+   RowBox[{"{", "778337", "}"}], ",", 
+   RowBox[{"{", "778338", "}"}], ",", 
+   RowBox[{"{", "778339", "}"}], ",", 
+   RowBox[{"{", "778340", "}"}], ",", 
+   RowBox[{"{", "786499", "}"}], ",", 
+   RowBox[{"{", "786500", "}"}], ",", 
+   RowBox[{"{", "786501", "}"}], ",", 
+   RowBox[{"{", "786502", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6909258171401215`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SewardTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Seward.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencySeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SewardTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsSeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencySeward", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencySeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for Seward\>\""}], \
+"\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsSeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Seward\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.690926074749595*^9, 3.690926074749595*^9}}],
+
+Cell[BoxData["204520"], "Output",
+ CellChangeTimes->{3.690926111229843*^9}],
+
+Cell[BoxData["\<\"42 total 7-word references from KJV, with repetition, for \
+Seward\"\>"], "Output",
+ CellChangeTimes->{3.6909359224576592`*^9}],
+
+Cell[BoxData["\<\"41 total 7-word citations from KJV, discrete mentions, for \
+Seward\"\>"], "Output",
+ CellChangeTimes->{3.6909359224576592`*^9}],
+
+Cell[BoxData["\<\"9811.1678140 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6909359224576592`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6909359225376616`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "175773", ",", "598939", ",", "598940", ",", "605722", ",", "609044", ",", 
+   "609045", ",", "613017", ",", "613018"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909359226676655`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"497540", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909359227976694`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909258039341216`*^9, 3.6909258051901217`*^9}, {
+  3.690980258807617*^9, 3.690980262007937*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "135579", "}"}], ",", 
+   RowBox[{"{", "175773", "}"}], ",", 
+   RowBox[{"{", "426411", "}"}], ",", 
+   RowBox[{"{", "426412", "}"}], ",", 
+   RowBox[{"{", "426413", "}"}], ",", 
+   RowBox[{"{", "426422", "}"}], ",", 
+   RowBox[{"{", "439258", "}"}], ",", 
+   RowBox[{"{", "497540", "}"}], ",", 
+   RowBox[{"{", "508596", "}"}], ",", 
+   RowBox[{"{", "509485", "}"}], ",", 
+   RowBox[{"{", "597155", "}"}], ",", 
+   RowBox[{"{", "598939", "}"}], ",", 
+   RowBox[{"{", "598940", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "609044", "}"}], ",", 
+   RowBox[{"{", "609045", "}"}], ",", 
+   RowBox[{"{", "613017", "}"}], ",", 
+   RowBox[{"{", "613018", "}"}], ",", 
+   RowBox[{"{", "630065", "}"}], ",", 
+   RowBox[{"{", "630066", "}"}], ",", 
+   RowBox[{"{", "634736", "}"}], ",", 
+   RowBox[{"{", "653042", "}"}], ",", 
+   RowBox[{"{", "654324", "}"}], ",", 
+   RowBox[{"{", "654325", "}"}], ",", 
+   RowBox[{"{", "654326", "}"}], ",", 
+   RowBox[{"{", "658378", "}"}], ",", 
+   RowBox[{"{", "662843", "}"}], ",", 
+   RowBox[{"{", "662844", "}"}], ",", 
+   RowBox[{"{", "662845", "}"}], ",", 
+   RowBox[{"{", "677117", "}"}], ",", 
+   RowBox[{"{", "690257", "}"}], ",", 
+   RowBox[{"{", "697479", "}"}], ",", 
+   RowBox[{"{", "745554", "}"}], ",", 
+   RowBox[{"{", "781534", "}"}], ",", 
+   RowBox[{"{", "781535", "}"}], ",", 
+   RowBox[{"{", "783259", "}"}], ",", 
+   RowBox[{"{", "784479", "}"}], ",", 
+   RowBox[{"{", "784480", "}"}], ",", 
+   RowBox[{"{", "794359", "}"}], ",", 
+   RowBox[{"{", "794360", "}"}], ",", 
+   RowBox[{"{", "794361", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6909802778045163`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EverettTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Everett.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"EverettTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyEverett", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.690980522808213*^9, 3.690980522808213*^9}}],
+
+Cell[BoxData["145656"], "Output",
+ CellChangeTimes->{3.6909806859198446`*^9}],
+
+Cell[BoxData["\<\"77 total 7-word references from KJV, with repetition, for \
+Everett\"\>"], "Output",
+ CellChangeTimes->{3.690989064608782*^9}],
+
+Cell[BoxData["\<\"77 total 7-word citations from KJV, discrete mentions, for \
+Everett\"\>"], "Output",
+ CellChangeTimes->{3.690989064608782*^9}],
+
+Cell[BoxData["\<\"8378.5789309 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.690989064608782*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"652575", ",", "652576"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909890646487846`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909890647787924`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6909890649088*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605722", ",", "783259"}], "}"}]], "Output",
+ CellChangeTimes->{3.690989065028807*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"KJVPartitioned", "[", 
+  RowBox[{"[", 
+   RowBox[{"605721", ";;", "605722"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908857118373404`*^9, 3.6908857386284113`*^9}, {
+  3.6908867025059967`*^9, 3.690886705601684*^9}, {3.6909928134421277`*^9, 
+  3.6909928225922194`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"my\"\>", ",", "\<\"tongue\"\>", ",", "\<\"cleave\"\>", 
+     ",", "\<\"to\"\>", ",", "\<\"the\"\>", ",", "\<\"roof\"\>", 
+     ",", "\<\"of\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"tongue\"\>", ",", "\<\"cleave\"\>", ",", "\<\"to\"\>", 
+     ",", "\<\"the\"\>", ",", "\<\"roof\"\>", ",", "\<\"of\"\>", 
+     ",", "\<\"my\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.69099282363223*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "4278", "}"}], ",", 
+   RowBox[{"{", "4808", "}"}], ",", 
+   RowBox[{"{", "4913", "}"}], ",", 
+   RowBox[{"{", "4914", "}"}], ",", 
+   RowBox[{"{", "4915", "}"}], ",", 
+   RowBox[{"{", "33226", "}"}], ",", 
+   RowBox[{"{", "34952", "}"}], ",", 
+   RowBox[{"{", "181724", "}"}], ",", 
+   RowBox[{"{", "278839", "}"}], ",", 
+   RowBox[{"{", "278840", "}"}], ",", 
+   RowBox[{"{", "278841", "}"}], ",", 
+   RowBox[{"{", "278842", "}"}], ",", 
+   RowBox[{"{", "318467", "}"}], ",", 
+   RowBox[{"{", "439398", "}"}], ",", 
+   RowBox[{"{", "504061", "}"}], ",", 
+   RowBox[{"{", "506778", "}"}], ",", 
+   RowBox[{"{", "506919", "}"}], ",", 
+   RowBox[{"{", "532649", "}"}], ",", 
+   RowBox[{"{", "561157", "}"}], ",", 
+   RowBox[{"{", "561158", "}"}], ",", 
+   RowBox[{"{", "581983", "}"}], ",", 
+   RowBox[{"{", "581984", "}"}], ",", 
+   RowBox[{"{", "581985", "}"}], ",", 
+   RowBox[{"{", "595227", "}"}], ",", 
+   RowBox[{"{", "595228", "}"}], ",", 
+   RowBox[{"{", "597162", "}"}], ",", 
+   RowBox[{"{", "605720", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "610050", "}"}], ",", 
+   RowBox[{"{", "624640", "}"}], ",", 
+   RowBox[{"{", "624801", "}"}], ",", 
+   RowBox[{"{", "624802", "}"}], ",", 
+   RowBox[{"{", "624803", "}"}], ",", 
+   RowBox[{"{", "629453", "}"}], ",", 
+   RowBox[{"{", "629454", "}"}], ",", 
+   RowBox[{"{", "631328", "}"}], ",", 
+   RowBox[{"{", "631329", "}"}], ",", 
+   RowBox[{"{", "638182", "}"}], ",", 
+   RowBox[{"{", "638183", "}"}], ",", 
+   RowBox[{"{", "638184", "}"}], ",", 
+   RowBox[{"{", "638185", "}"}], ",", 
+   RowBox[{"{", "638186", "}"}], ",", 
+   RowBox[{"{", "638239", "}"}], ",", 
+   RowBox[{"{", "638240", "}"}], ",", 
+   RowBox[{"{", "638241", "}"}], ",", 
+   RowBox[{"{", "638242", "}"}], ",", 
+   RowBox[{"{", "638243", "}"}], ",", 
+   RowBox[{"{", "652575", "}"}], ",", 
+   RowBox[{"{", "652576", "}"}], ",", 
+   RowBox[{"{", "654591", "}"}], ",", 
+   RowBox[{"{", "654598", "}"}], ",", 
+   RowBox[{"{", "654599", "}"}], ",", 
+   RowBox[{"{", "655244", "}"}], ",", 
+   RowBox[{"{", "655245", "}"}], ",", 
+   RowBox[{"{", "676515", "}"}], ",", 
+   RowBox[{"{", "686449", "}"}], ",", 
+   RowBox[{"{", "690265", "}"}], ",", 
+   RowBox[{"{", "693873", "}"}], ",", 
+   RowBox[{"{", "693874", "}"}], ",", 
+   RowBox[{"{", "693892", "}"}], ",", 
+   RowBox[{"{", "693893", "}"}], ",", 
+   RowBox[{"{", "693903", "}"}], ",", 
+   RowBox[{"{", "693904", "}"}], ",", 
+   RowBox[{"{", "693905", "}"}], ",", 
+   RowBox[{"{", "693927", "}"}], ",", 
+   RowBox[{"{", "693928", "}"}], ",", 
+   RowBox[{"{", "693942", "}"}], ",", 
+   RowBox[{"{", "693943", "}"}], ",", 
+   RowBox[{"{", "693972", "}"}], ",", 
+   RowBox[{"{", "693973", "}"}], ",", 
+   RowBox[{"{", "697983", "}"}], ",", 
+   RowBox[{"{", "743481", "}"}], ",", 
+   RowBox[{"{", "743947", "}"}], ",", 
+   RowBox[{"{", "762887", "}"}], ",", 
+   RowBox[{"{", "783259", "}"}], ",", 
+   RowBox[{"{", "787987", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.690992840992403*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"WebsterTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Webster.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"WebsterTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyWebster", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsEverett", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.690992958424011*^9, 3.690992975953764*^9}, {
+  3.690993008846053*^9, 3.6909930102211905`*^9}}],
+
+Cell[BoxData["147232"], "Output",
+ CellChangeTimes->{3.6909930225314217`*^9}],
+
+Cell[BoxData["\<\"67 total 7-word references from KJV, with repetition, for \
+Webster\"\>"], "Output",
+ CellChangeTimes->{3.691001648856337*^9}],
+
+Cell[BoxData["\<\"46 total 7-word citations from KJV, discrete mentions, for \
+Webster\"\>"], "Output",
+ CellChangeTimes->{3.691001648856337*^9}],
+
+Cell[BoxData["\<\"8626.2759151 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691001648856337*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910016489463377`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "598938", ",", "598939", ",", "598940", ",", "605721", ",", "605722", ",", 
+   "609043", ",", "609044", ",", "609045", ",", "613016", ",", "613017", ",", 
+   "613018", ",", "616384", ",", "776629"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910016490763392`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910016492063403`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "598939", ",", "598940", ",", "605722", ",", "609044", ",", "609045", ",", 
+   "613017", ",", "613018"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910016493263416`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4278", ",", "605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910016494563427`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}, {
+  3.6910018949287977`*^9, 3.6910018959488077`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "4277", "}"}], ",", 
+   RowBox[{"{", "4278", "}"}], ",", 
+   RowBox[{"{", "12208", "}"}], ",", 
+   RowBox[{"{", "66051", "}"}], ",", 
+   RowBox[{"{", "66052", "}"}], ",", 
+   RowBox[{"{", "169823", "}"}], ",", 
+   RowBox[{"{", "169887", "}"}], ",", 
+   RowBox[{"{", "170011", "}"}], ",", 
+   RowBox[{"{", "237741", "}"}], ",", 
+   RowBox[{"{", "260676", "}"}], ",", 
+   RowBox[{"{", "260677", "}"}], ",", 
+   RowBox[{"{", "326331", "}"}], ",", 
+   RowBox[{"{", "326332", "}"}], ",", 
+   RowBox[{"{", "494359", "}"}], ",", 
+   RowBox[{"{", "494360", "}"}], ",", 
+   RowBox[{"{", "494683", "}"}], ",", 
+   RowBox[{"{", "494684", "}"}], ",", 
+   RowBox[{"{", "497536", "}"}], ",", 
+   RowBox[{"{", "497537", "}"}], ",", 
+   RowBox[{"{", "499351", "}"}], ",", 
+   RowBox[{"{", "499352", "}"}], ",", 
+   RowBox[{"{", "500571", "}"}], ",", 
+   RowBox[{"{", "500572", "}"}], ",", 
+   RowBox[{"{", "558676", "}"}], ",", 
+   RowBox[{"{", "562182", "}"}], ",", 
+   RowBox[{"{", "562183", "}"}], ",", 
+   RowBox[{"{", "598938", "}"}], ",", 
+   RowBox[{"{", "598939", "}"}], ",", 
+   RowBox[{"{", "598940", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "609043", "}"}], ",", 
+   RowBox[{"{", "609044", "}"}], ",", 
+   RowBox[{"{", "609045", "}"}], ",", 
+   RowBox[{"{", "613016", "}"}], ",", 
+   RowBox[{"{", "613017", "}"}], ",", 
+   RowBox[{"{", "613018", "}"}], ",", 
+   RowBox[{"{", "616384", "}"}], ",", 
+   RowBox[{"{", "637088", "}"}], ",", 
+   RowBox[{"{", "637089", "}"}], ",", 
+   RowBox[{"{", "637090", "}"}], ",", 
+   RowBox[{"{", "646653", "}"}], ",", 
+   RowBox[{"{", "660566", "}"}], ",", 
+   RowBox[{"{", "665945", "}"}], ",", 
+   RowBox[{"{", "684948", "}"}], ",", 
+   RowBox[{"{", "776629", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.691001904758896*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CalhounTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Calhoun.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"CalhounTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyCalhoun", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.691002024560094*^9, 3.691002024560094*^9}}],
+
+Cell[BoxData["147160"], "Output",
+ CellChangeTimes->{3.6910020897207456`*^9}],
+
+Cell[BoxData["\<\"4 total 7-word references from KJV, with repetition, for \
+Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6910041586298513`*^9}],
+
+Cell[BoxData["\<\"4 total 7-word citations from KJV, discrete mentions, for \
+Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6910041586298513`*^9}],
+
+Cell[BoxData["\<\"2068.8491032 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6910041586298513`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691004158709854*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"175773", ",", "776629"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910041588398595`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691004158969865*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "175773", "}"}]], "Output",
+ CellChangeTimes->{3.6910041590998697`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "776629", "}"}]], "Output",
+ CellChangeTimes->{3.691004159229875*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}, {
+  3.6910018949287977`*^9, 3.6910018959488077`*^9}, {3.6910052474663253`*^9, 
+  3.6910052507863584`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "175773", "}"}], ",", 
+   RowBox[{"{", "464689", "}"}], ",", 
+   RowBox[{"{", "609899", "}"}], ",", 
+   RowBox[{"{", "776629", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6910052652665033`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ClayTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Clay.txt\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyClay", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"ClayTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsClay", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyClay", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyClay", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for Clay\>\""}], "\
+\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsClay", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for Clay\>\""}], \
+"\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6910054001878524`*^9, 3.691005418488035*^9}}],
+
+Cell[BoxData["152440"], "Output",
+ CellChangeTimes->{3.69100547694862*^9}],
+
+Cell[BoxData["\<\"38 total 7-word references from KJV, with repetition, for \
+Clay\"\>"], "Output",
+ CellChangeTimes->{3.691009180168667*^9}],
+
+Cell[BoxData["\<\"38 total 7-word citations from KJV, discrete mentions, for \
+Clay\"\>"], "Output",
+ CellChangeTimes->{3.691009180168667*^9}],
+
+Cell[BoxData["\<\"3703.2200468 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691009180178667*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691009180298668*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910091804286695`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691009180558671*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691009180688672*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "66051", ",", "66052", ",", "260676", ",", "260677", ",", "326331", ",", 
+   "326332", ",", "494359", ",", "494360", ",", "494683", ",", "494684", ",", 
+   "497536", ",", "497537", ",", "499351", ",", "499352", ",", "500571", ",", 
+   "500572"}], "}"}]], "Output",
+ CellChangeTimes->{3.691009180818673*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910091809386744`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsClay", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}, {
+  3.6910018949287977`*^9, 3.6910018959488077`*^9}, {3.6910052474663253`*^9, 
+  3.6910052507863584`*^9}, {3.691011309552961*^9, 3.691011312382989*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "55352", "}"}], ",", 
+   RowBox[{"{", "55353", "}"}], ",", 
+   RowBox[{"{", "55354", "}"}], ",", 
+   RowBox[{"{", "55355", "}"}], ",", 
+   RowBox[{"{", "55356", "}"}], ",", 
+   RowBox[{"{", "66051", "}"}], ",", 
+   RowBox[{"{", "66052", "}"}], ",", 
+   RowBox[{"{", "93556", "}"}], ",", 
+   RowBox[{"{", "93557", "}"}], ",", 
+   RowBox[{"{", "138524", "}"}], ",", 
+   RowBox[{"{", "138525", "}"}], ",", 
+   RowBox[{"{", "138526", "}"}], ",", 
+   RowBox[{"{", "138527", "}"}], ",", 
+   RowBox[{"{", "138528", "}"}], ",", 
+   RowBox[{"{", "260676", "}"}], ",", 
+   RowBox[{"{", "260677", "}"}], ",", 
+   RowBox[{"{", "326331", "}"}], ",", 
+   RowBox[{"{", "326332", "}"}], ",", 
+   RowBox[{"{", "450105", "}"}], ",", 
+   RowBox[{"{", "450106", "}"}], ",", 
+   RowBox[{"{", "450107", "}"}], ",", 
+   RowBox[{"{", "494359", "}"}], ",", 
+   RowBox[{"{", "494360", "}"}], ",", 
+   RowBox[{"{", "494683", "}"}], ",", 
+   RowBox[{"{", "494684", "}"}], ",", 
+   RowBox[{"{", "497536", "}"}], ",", 
+   RowBox[{"{", "497537", "}"}], ",", 
+   RowBox[{"{", "499351", "}"}], ",", 
+   RowBox[{"{", "499352", "}"}], ",", 
+   RowBox[{"{", "500571", "}"}], ",", 
+   RowBox[{"{", "500572", "}"}], ",", 
+   RowBox[{"{", "646510", "}"}], ",", 
+   RowBox[{"{", "646511", "}"}], ",", 
+   RowBox[{"{", "665763", "}"}], ",", 
+   RowBox[{"{", "665771", "}"}], ",", 
+   RowBox[{"{", "665772", "}"}], ",", 
+   RowBox[{"{", "684748", "}"}], ",", 
+   RowBox[{"{", "684749", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6910113155030203`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"PhillipsTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Phillips.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyPhillips", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"PhillipsTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsPhillips", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyPhillips", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyPhillips", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Phillips\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsPhillips", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Phillips\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6910116957958803`*^9, 3.6910116958058815`*^9}}],
+
+Cell[BoxData["145160"], "Output",
+ CellChangeTimes->{3.691011729398905*^9}],
+
+Cell[BoxData["\<\"73 total 7-word references from KJV, with repetition, for \
+Phillips\"\>"], "Output",
+ CellChangeTimes->{3.69101236928255*^9}],
+
+Cell[BoxData["\<\"72 total 7-word citations from KJV, discrete mentions, for \
+Phillips\"\>"], "Output",
+ CellChangeTimes->{3.69101236928255*^9}],
+
+Cell[BoxData["\<\"639.8436449 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.69101236929255*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910123693725514`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.691012369502554*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "605721", ",", "605722", ",", "716717", ",", "716718", ",", "716719"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.691012369632557*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "605722", "}"}]], "Output",
+ CellChangeTimes->{3.691012369762559*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.691012369892562*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910123700225644`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910123701425667`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}, {
+  3.6910018949287977`*^9, 3.6910018959488077`*^9}, {3.6910052474663253`*^9, 
+  3.6910052507863584`*^9}, {3.691011309552961*^9, 3.691011312382989*^9}, {
+  3.6910133332461977`*^9, 3.6910133347662125`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "7118", "}"}], ",", 
+   RowBox[{"{", "7119", "}"}], ",", 
+   RowBox[{"{", "20134", "}"}], ",", 
+   RowBox[{"{", "20221", "}"}], ",", 
+   RowBox[{"{", "20222", "}"}], ",", 
+   RowBox[{"{", "20223", "}"}], ",", 
+   RowBox[{"{", "24123", "}"}], ",", 
+   RowBox[{"{", "35799", "}"}], ",", 
+   RowBox[{"{", "35800", "}"}], ",", 
+   RowBox[{"{", "36904", "}"}], ",", 
+   RowBox[{"{", "36905", "}"}], ",", 
+   RowBox[{"{", "36918", "}"}], ",", 
+   RowBox[{"{", "36919", "}"}], ",", 
+   RowBox[{"{", "36920", "}"}], ",", 
+   RowBox[{"{", "36921", "}"}], ",", 
+   RowBox[{"{", "36922", "}"}], ",", 
+   RowBox[{"{", "36931", "}"}], ",", 
+   RowBox[{"{", "36932", "}"}], ",", 
+   RowBox[{"{", "36933", "}"}], ",", 
+   RowBox[{"{", "36934", "}"}], ",", 
+   RowBox[{"{", "36935", "}"}], ",", 
+   RowBox[{"{", "36936", "}"}], ",", 
+   RowBox[{"{", "36937", "}"}], ",", 
+   RowBox[{"{", "36938", "}"}], ",", 
+   RowBox[{"{", "36945", "}"}], ",", 
+   RowBox[{"{", "36946", "}"}], ",", 
+   RowBox[{"{", "65863", "}"}], ",", 
+   RowBox[{"{", "65864", "}"}], ",", 
+   RowBox[{"{", "95612", "}"}], ",", 
+   RowBox[{"{", "95613", "}"}], ",", 
+   RowBox[{"{", "95614", "}"}], ",", 
+   RowBox[{"{", "132430", "}"}], ",", 
+   RowBox[{"{", "132431", "}"}], ",", 
+   RowBox[{"{", "132432", "}"}], ",", 
+   RowBox[{"{", "178087", "}"}], ",", 
+   RowBox[{"{", "216033", "}"}], ",", 
+   RowBox[{"{", "374326", "}"}], ",", 
+   RowBox[{"{", "393406", "}"}], ",", 
+   RowBox[{"{", "404952", "}"}], ",", 
+   RowBox[{"{", "404953", "}"}], ",", 
+   RowBox[{"{", "404954", "}"}], ",", 
+   RowBox[{"{", "409368", "}"}], ",", 
+   RowBox[{"{", "429789", "}"}], ",", 
+   RowBox[{"{", "429790", "}"}], ",", 
+   RowBox[{"{", "440259", "}"}], ",", 
+   RowBox[{"{", "530574", "}"}], ",", 
+   RowBox[{"{", "530575", "}"}], ",", 
+   RowBox[{"{", "556710", "}"}], ",", 
+   RowBox[{"{", "556711", "}"}], ",", 
+   RowBox[{"{", "556712", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "625119", "}"}], ",", 
+   RowBox[{"{", "635329", "}"}], ",", 
+   RowBox[{"{", "638062", "}"}], ",", 
+   RowBox[{"{", "640723", "}"}], ",", 
+   RowBox[{"{", "678247", "}"}], ",", 
+   RowBox[{"{", "681970", "}"}], ",", 
+   RowBox[{"{", "714796", "}"}], ",", 
+   RowBox[{"{", "714797", "}"}], ",", 
+   RowBox[{"{", "714798", "}"}], ",", 
+   RowBox[{"{", "714807", "}"}], ",", 
+   RowBox[{"{", "714808", "}"}], ",", 
+   RowBox[{"{", "714809", "}"}], ",", 
+   RowBox[{"{", "714819", "}"}], ",", 
+   RowBox[{"{", "716717", "}"}], ",", 
+   RowBox[{"{", "716718", "}"}], ",", 
+   RowBox[{"{", "716719", "}"}], ",", 
+   RowBox[{"{", "732154", "}"}], ",", 
+   RowBox[{"{", "732155", "}"}], ",", 
+   RowBox[{"{", "740687", "}"}], ",", 
+   RowBox[{"{", "740696", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.691013337036235*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DouglassTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Douglass.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVFrequencyDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"DouglassTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"KJVPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"KJVMentionsDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KJVFrequencyDouglass", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "KJVPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVFrequencyDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from KJV, with repetition, for \
+Douglass\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "KJVMentionsDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from KJV, discrete mentions, for \
+Douglass\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsStephens", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSumner", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsSeward", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsWebster", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsClay", ",", "1"}], "]"}], "]"}]}], "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"KJVMentionsPhillips", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6910144800929146`*^9, 3.691014480093915*^9}}],
+
+Cell[BoxData["146248"], "Output",
+ CellChangeTimes->{3.691014506125518*^9}],
+
+Cell[BoxData["\<\"88 total 7-word references from KJV, with repetition, for \
+Douglass\"\>"], "Output",
+ CellChangeTimes->{3.691015926946334*^9}],
+
+Cell[BoxData["\<\"84 total 7-word citations from KJV, discrete mentions, for \
+Douglass\"\>"], "Output",
+ CellChangeTimes->{3.6910159269483337`*^9}],
+
+Cell[BoxData["\<\"1420.7608097 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691015926949334*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910159270283413`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910159271573544`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722", ",", "652035", ",", "652334"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.691015927287368*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "605722", "}"}]], "Output",
+ CellChangeTimes->{3.6910159274153805`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.6910159275453935`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691015927674406*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691015927803419*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"605721", ",", "605722"}], "}"}]], "Output",
+ CellChangeTimes->{3.691015927932432*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"KJVMentionsDouglass", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6909928382923765`*^9, 3.6909928398523917`*^9}, {
+  3.6910018949287977`*^9, 3.6910018959488077`*^9}, {3.6910052474663253`*^9, 
+  3.6910052507863584`*^9}, {3.691011309552961*^9, 3.691011312382989*^9}, {
+  3.6910133332461977`*^9, 3.6910133347662125`*^9}, {3.691021237366905*^9, 
+  3.6910212410452733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "53561", "}"}], ",", 
+   RowBox[{"{", "416192", "}"}], ",", 
+   RowBox[{"{", "416193", "}"}], ",", 
+   RowBox[{"{", "416194", "}"}], ",", 
+   RowBox[{"{", "416203", "}"}], ",", 
+   RowBox[{"{", "416204", "}"}], ",", 
+   RowBox[{"{", "416205", "}"}], ",", 
+   RowBox[{"{", "416206", "}"}], ",", 
+   RowBox[{"{", "416207", "}"}], ",", 
+   RowBox[{"{", "416208", "}"}], ",", 
+   RowBox[{"{", "416760", "}"}], ",", 
+   RowBox[{"{", "416761", "}"}], ",", 
+   RowBox[{"{", "416762", "}"}], ",", 
+   RowBox[{"{", "416770", "}"}], ",", 
+   RowBox[{"{", "416771", "}"}], ",", 
+   RowBox[{"{", "416772", "}"}], ",", 
+   RowBox[{"{", "416773", "}"}], ",", 
+   RowBox[{"{", "416774", "}"}], ",", 
+   RowBox[{"{", "416775", "}"}], ",", 
+   RowBox[{"{", "419661", "}"}], ",", 
+   RowBox[{"{", "419662", "}"}], ",", 
+   RowBox[{"{", "419663", "}"}], ",", 
+   RowBox[{"{", "419664", "}"}], ",", 
+   RowBox[{"{", "419665", "}"}], ",", 
+   RowBox[{"{", "419666", "}"}], ",", 
+   RowBox[{"{", "428297", "}"}], ",", 
+   RowBox[{"{", "428461", "}"}], ",", 
+   RowBox[{"{", "428462", "}"}], ",", 
+   RowBox[{"{", "506995", "}"}], ",", 
+   RowBox[{"{", "605644", "}"}], ",", 
+   RowBox[{"{", "605645", "}"}], ",", 
+   RowBox[{"{", "605646", "}"}], ",", 
+   RowBox[{"{", "605647", "}"}], ",", 
+   RowBox[{"{", "605706", "}"}], ",", 
+   RowBox[{"{", "605720", "}"}], ",", 
+   RowBox[{"{", "605721", "}"}], ",", 
+   RowBox[{"{", "605722", "}"}], ",", 
+   RowBox[{"{", "641051", "}"}], ",", 
+   RowBox[{"{", "641052", "}"}], ",", 
+   RowBox[{"{", "651816", "}"}], ",", 
+   RowBox[{"{", "651817", "}"}], ",", 
+   RowBox[{"{", "651818", "}"}], ",", 
+   RowBox[{"{", "651819", "}"}], ",", 
+   RowBox[{"{", "651820", "}"}], ",", 
+   RowBox[{"{", "651830", "}"}], ",", 
+   RowBox[{"{", "651831", "}"}], ",", 
+   RowBox[{"{", "651832", "}"}], ",", 
+   RowBox[{"{", "651833", "}"}], ",", 
+   RowBox[{"{", "651861", "}"}], ",", 
+   RowBox[{"{", "651971", "}"}], ",", 
+   RowBox[{"{", "651972", "}"}], ",", 
+   RowBox[{"{", "651973", "}"}], ",", 
+   RowBox[{"{", "651974", "}"}], ",", 
+   RowBox[{"{", "652018", "}"}], ",", 
+   RowBox[{"{", "652035", "}"}], ",", 
+   RowBox[{"{", "652036", "}"}], ",", 
+   RowBox[{"{", "652049", "}"}], ",", 
+   RowBox[{"{", "652050", "}"}], ",", 
+   RowBox[{"{", "652051", "}"}], ",", 
+   RowBox[{"{", "652052", "}"}], ",", 
+   RowBox[{"{", "652211", "}"}], ",", 
+   RowBox[{"{", "652222", "}"}], ",", 
+   RowBox[{"{", "652223", "}"}], ",", 
+   RowBox[{"{", "652224", "}"}], ",", 
+   RowBox[{"{", "652272", "}"}], ",", 
+   RowBox[{"{", "652273", "}"}], ",", 
+   RowBox[{"{", "652274", "}"}], ",", 
+   RowBox[{"{", "652275", "}"}], ",", 
+   RowBox[{"{", "652321", "}"}], ",", 
+   RowBox[{"{", "652322", "}"}], ",", 
+   RowBox[{"{", "652334", "}"}], ",", 
+   RowBox[{"{", "652335", "}"}], ",", 
+   RowBox[{"{", "652347", "}"}], ",", 
+   RowBox[{"{", "652348", "}"}], ",", 
+   RowBox[{"{", "652349", "}"}], ",", 
+   RowBox[{"{", "652357", "}"}], ",", 
+   RowBox[{"{", "652358", "}"}], ",", 
+   RowBox[{"{", "653179", "}"}], ",", 
+   RowBox[{"{", "653420", "}"}], ",", 
+   RowBox[{"{", "653474", "}"}], ",", 
+   RowBox[{"{", "670100", "}"}], ",", 
+   RowBox[{"{", "687709", "}"}], ",", 
+   RowBox[{"{", "745650", "}"}], ",", 
+   RowBox[{"{", "765066", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6910212427404428`*^9}]
+}, Open  ]]
+},
+WindowSize->{646, 546},
+WindowMargins->{{Automatic, 174}, {Automatic, 23}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (June 2, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 5135, 148, 832, "Input"],
+Cell[5717, 172, 148, 2, 52, "Output"],
+Cell[5868, 176, 149, 2, 52, "Output"],
+Cell[6020, 180, 104, 1, 31, "Output"],
+Cell[6127, 183, 146, 2, 31, "Output"],
+Cell[6276, 187, 145, 2, 31, "Output"],
+Cell[6424, 191, 107, 1, 31, "Output"],
+Cell[6534, 194, 124, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6695, 202, 246, 5, 31, "Input"],
+Cell[6944, 209, 543, 12, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7524, 226, 170, 3, 31, "Input"],
+Cell[7697, 231, 5144, 134, 432, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12878, 370, 167, 3, 31, "Input"],
+Cell[13048, 375, 3620, 94, 312, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16705, 474, 3031, 84, 452, "Input"],
+Cell[19739, 560, 79, 1, 31, "Output"],
+Cell[19821, 563, 146, 2, 31, "Output"],
+Cell[19970, 567, 147, 2, 31, "Output"],
+Cell[20120, 571, 107, 1, 31, "Output"],
+Cell[20230, 574, 87, 2, 31, "Output"],
+Cell[20320, 578, 209, 5, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20566, 588, 170, 3, 31, "Input"],
+Cell[20739, 593, 11934, 308, 1012, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32710, 906, 3165, 89, 492, "Input"],
+Cell[35878, 997, 75, 1, 31, "Output"],
+Cell[35956, 1000, 145, 2, 31, "Output"],
+Cell[36104, 1004, 146, 2, 31, "Output"],
+Cell[36253, 1008, 106, 1, 31, "Output"],
+Cell[36362, 1011, 89, 2, 31, "Output"],
+Cell[36454, 1015, 224, 5, 31, "Output"],
+Cell[36681, 1022, 127, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36845, 1030, 219, 4, 31, "Input"],
+Cell[37067, 1036, 1696, 44, 152, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38800, 1085, 3479, 97, 552, "Input"],
+Cell[42282, 1184, 77, 1, 31, "Output"],
+Cell[42362, 1187, 144, 2, 31, "Output"],
+Cell[42509, 1191, 145, 2, 31, "Output"],
+Cell[42657, 1195, 104, 1, 31, "Output"],
+Cell[42764, 1198, 127, 3, 31, "Output"],
+Cell[42894, 1203, 127, 3, 31, "Output"],
+Cell[43024, 1208, 123, 3, 31, "Output"],
+Cell[43150, 1213, 125, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43312, 1221, 299, 6, 31, "Input"],
+Cell[43614, 1229, 484, 11, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44135, 1245, 171, 3, 31, "Input"],
+Cell[44309, 1250, 3086, 80, 272, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47432, 1335, 3855, 108, 592, "Input"],
+Cell[51290, 1445, 77, 1, 31, "Output"],
+Cell[51370, 1448, 144, 2, 31, "Output"],
+Cell[51517, 1452, 145, 2, 31, "Output"],
+Cell[51665, 1456, 104, 1, 31, "Output"],
+Cell[51772, 1459, 89, 2, 31, "Output"],
+Cell[51864, 1463, 303, 6, 52, "Output"],
+Cell[52170, 1471, 127, 3, 31, "Output"],
+Cell[52300, 1476, 209, 5, 31, "Output"],
+Cell[52512, 1483, 140, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52689, 1491, 224, 4, 31, "Input"],
+Cell[52916, 1497, 1882, 49, 172, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54835, 1551, 3784, 106, 592, "Input"],
+Cell[58622, 1659, 77, 1, 31, "Output"],
+Cell[58702, 1662, 145, 2, 31, "Output"],
+Cell[58850, 1666, 146, 2, 31, "Output"],
+Cell[58999, 1670, 106, 1, 31, "Output"],
+Cell[59108, 1673, 87, 2, 31, "Output"],
+Cell[59198, 1677, 127, 3, 31, "Output"],
+Cell[59328, 1682, 87, 2, 31, "Output"],
+Cell[59418, 1686, 99, 2, 31, "Output"],
+Cell[59520, 1690, 97, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59654, 1697, 277, 5, 31, "Input"],
+Cell[59934, 1704, 253, 7, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60224, 1716, 4058, 115, 572, "Input"],
+Cell[64285, 1833, 74, 1, 31, "Output"],
+Cell[64362, 1836, 141, 2, 31, "Output"],
+Cell[64506, 1840, 142, 2, 31, "Output"],
+Cell[64651, 1844, 104, 1, 31, "Output"],
+Cell[64758, 1847, 87, 2, 31, "Output"],
+Cell[64848, 1851, 89, 2, 31, "Output"],
+Cell[64940, 1855, 87, 2, 31, "Output"],
+Cell[65030, 1859, 87, 2, 31, "Output"],
+Cell[65120, 1863, 348, 7, 52, "Output"],
+Cell[65471, 1872, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[65597, 1879, 320, 5, 31, "Input"],
+Cell[65920, 1886, 1570, 41, 152, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[67527, 1932, 4403, 121, 672, "Input"],
+Cell[71933, 2055, 75, 1, 31, "Output"],
+Cell[72011, 2058, 144, 2, 31, "Output"],
+Cell[72158, 2062, 145, 2, 52, "Output"],
+Cell[72306, 2066, 102, 1, 31, "Output"],
+Cell[72411, 2069, 89, 2, 31, "Output"],
+Cell[72503, 2073, 125, 3, 31, "Output"],
+Cell[72631, 2078, 176, 5, 31, "Output"],
+Cell[72810, 2085, 97, 2, 31, "Output"],
+Cell[72910, 2089, 125, 3, 31, "Output"],
+Cell[73038, 2094, 89, 2, 31, "Output"],
+Cell[73130, 2098, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73256, 2105, 377, 6, 31, "Input"],
+Cell[73636, 2113, 2870, 75, 252, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76543, 2193, 4708, 130, 712, "Input"],
+Cell[81254, 2325, 75, 1, 31, "Output"],
+Cell[81332, 2328, 145, 2, 31, "Output"],
+Cell[81480, 2332, 148, 2, 52, "Output"],
+Cell[81631, 2336, 104, 1, 31, "Output"],
+Cell[81738, 2339, 89, 2, 31, "Output"],
+Cell[81830, 2343, 127, 3, 31, "Output"],
+Cell[81960, 2348, 158, 4, 31, "Output"],
+Cell[82121, 2354, 99, 2, 31, "Output"],
+Cell[82223, 2358, 127, 3, 31, "Output"],
+Cell[82353, 2363, 87, 2, 31, "Output"],
+Cell[82443, 2367, 87, 2, 31, "Output"],
+Cell[82533, 2371, 125, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82695, 2379, 428, 7, 31, "Input"],
+Cell[83126, 2388, 3372, 87, 292, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

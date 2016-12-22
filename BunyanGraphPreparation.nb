@@ -1,0 +1,633 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22954,        624]
+NotebookOptionsPosition[     22542,        607]
+NotebookOutlinePosition[     22890,        622]
+CellTagsIndexPosition[     22847,        619]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"BunyanMentionsStephensList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "9806", "}"}], ",", 
+     RowBox[{"{", "19152", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsLincolnList", " ", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "19152", "}"}], ",", 
+     RowBox[{"{", "42577", "}"}], ",", 
+     RowBox[{"{", "57113", "}"}], ",", 
+     RowBox[{"{", "57114", "}"}], ",", 
+     RowBox[{"{", "57115", "}"}], ",", 
+     RowBox[{"{", "57116", "}"}], ",", 
+     RowBox[{"{", "88122", "}"}], ",", 
+     RowBox[{"{", "97984", "}"}], ",", 
+     RowBox[{"{", "103547", "}"}], ",", 
+     RowBox[{"{", "106288", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsSumnerList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "11074", "}"}], ",", 
+     RowBox[{"{", "17825", "}"}], ",", 
+     RowBox[{"{", "17826", "}"}], ",", 
+     RowBox[{"{", "21670", "}"}], ",", 
+     RowBox[{"{", "21671", "}"}], ",", 
+     RowBox[{"{", "21672", "}"}], ",", 
+     RowBox[{"{", "21679", "}"}], ",", 
+     RowBox[{"{", "21680", "}"}], ",", 
+     RowBox[{"{", "21681", "}"}], ",", 
+     RowBox[{"{", "21682", "}"}], ",", 
+     RowBox[{"{", "21683", "}"}], ",", 
+     RowBox[{"{", "21684", "}"}], ",", 
+     RowBox[{"{", "21685", "}"}], ",", 
+     RowBox[{"{", "21686", "}"}], ",", 
+     RowBox[{"{", "21687", "}"}], ",", 
+     RowBox[{"{", "21694", "}"}], ",", 
+     RowBox[{"{", "21695", "}"}], ",", 
+     RowBox[{"{", "21696", "}"}], ",", 
+     RowBox[{"{", "21697", "}"}], ",", 
+     RowBox[{"{", "21698", "}"}], ",", 
+     RowBox[{"{", "21717", "}"}], ",", 
+     RowBox[{"{", "21718", "}"}], ",", 
+     RowBox[{"{", "21719", "}"}], ",", 
+     RowBox[{"{", "21720", "}"}], ",", 
+     RowBox[{"{", "21721", "}"}], ",", 
+     RowBox[{"{", "21722", "}"}], ",", 
+     RowBox[{"{", "21834", "}"}], ",", 
+     RowBox[{"{", "21860", "}"}], ",", 
+     RowBox[{"{", "21873", "}"}], ",", 
+     RowBox[{"{", "21909", "}"}], ",", 
+     RowBox[{"{", "21920", "}"}], ",", 
+     RowBox[{"{", "21927", "}"}], ",", 
+     RowBox[{"{", "57204", "}"}], ",", 
+     RowBox[{"{", "57205", "}"}], ",", 
+     RowBox[{"{", "71410", "}"}], ",", 
+     RowBox[{"{", "92785", "}"}], ",", 
+     RowBox[{"{", "106984", "}"}], ",", 
+     RowBox[{"{", "106985", "}"}], ",", 
+     RowBox[{"{", "106986", "}"}], ",", 
+     RowBox[{"{", "106995", "}"}], ",", 
+     RowBox[{"{", "106996", "}"}], ",", 
+     RowBox[{"{", "106997", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsSewardList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "57114", "}"}], ",", 
+     RowBox[{"{", "57115", "}"}], ",", 
+     RowBox[{"{", "57116", "}"}], ",", 
+     RowBox[{"{", "85891", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsEverettList", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "67503", "}"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsWebsterList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "57113", "}"}], ",", 
+     RowBox[{"{", "57114", "}"}], ",", 
+     RowBox[{"{", "57115", "}"}], ",", 
+     RowBox[{"{", "89421", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsCalhounList", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "19152", "}"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsClayList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "87750", "}"}], ",", 
+     RowBox[{"{", "635056", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsPhillipsList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "176636", "}"}], ",", 
+     RowBox[{"{", "189970", "}"}], ",", 
+     RowBox[{"{", "189971", "}"}], ",", 
+     RowBox[{"{", "189972", "}"}], ",", 
+     RowBox[{"{", "227093", "}"}], ",", 
+     RowBox[{"{", "227094", "}"}], ",", 
+     RowBox[{"{", "227095", "}"}], ",", 
+     RowBox[{"{", "422532", "}"}], ",", 
+     RowBox[{"{", "599271", "}"}], ",", 
+     RowBox[{"{", "599272", "}"}], ",", 
+     RowBox[{"{", "599273", "}"}], ",", 
+     RowBox[{"{", "599274", "}"}], ",", 
+     RowBox[{"{", "599275", "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsDouglassList", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "}"}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6910696199708233`*^9, 3.6910696281914964`*^9}, 
+   3.6910697233453965`*^9, {3.691155632960657*^9, 3.691155639330724*^9}, 
+   3.691157285074061*^9, {3.691257651829627*^9, 3.691257651985627*^9}, {
+   3.691257689597227*^9, 3.691257829515008*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BunyanMentionsJacksonList", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "}"}], "}"}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Jackson", " ", "has", " ", "NO", " ", "7"}], "-", 
+    RowBox[{"word", " ", "Bunyan", " ", "citations"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.6910700141793237`*^9, 3.6910700374855747`*^9}, {
+   3.6910704095782804`*^9, 3.6910704245076723`*^9}, {3.691157202951955*^9, 
+   3.6911572075470057`*^9}, 3.691157251436697*^9, {3.691257652016827*^9, 
+   3.691257652016827*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LocNamePairs", " ", "=", " ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsStephensList", "]"}], ",", 
+         "1"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsLincolnList", "]"}], ",", 
+         "2"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsSumnerList", "]"}], ",", 
+         "3"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsSewardList", "]"}], ",", 
+         "4"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsEverettList", "]"}], ",", 
+         "5"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsWebsterList", "]"}], ",", 
+         "6"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{"Riffle", "[", 
+          RowBox[{
+           RowBox[{"Flatten", "[", "BunyanMentionsCalhounList", "]"}], ",", 
+           "7"}], "]"}], ",", "2"}], "]"}], ","}], "*)"}], 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsClayList", "]"}], ",", "8"}], 
+        "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsPhillipsList", "]"}], ",", 
+         "9"}], "]"}], ",", "2"}], "]"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", "BunyanMentionsDouglassList", "]"}], ",", 
+         "10"}], "]"}], ",", "2"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6910707067620907`*^9, 3.691070727884762*^9}, {
+   3.6910707644516306`*^9, 3.6910707688196864`*^9}, {3.6910709780818644`*^9, 
+   3.691071006162404*^9}, {3.6910710823698697`*^9, 3.6910711632106247`*^9}, {
+   3.691071401942015*^9, 3.6910714132834334`*^9}, {3.691071961718705*^9, 
+   3.691071965821479*^9}, {3.691073526278021*^9, 3.6910735522525206`*^9}, 
+   3.6910745852021823`*^9, 3.691074991793788*^9, {3.691075259838143*^9, 
+   3.6910752686679125`*^9}, 3.6910800224413967`*^9, {3.691081069925293*^9, 
+   3.6910811000024786`*^9}, {3.691081429806307*^9, 3.691081498775791*^9}, 
+   3.6910815364658747`*^9, {3.6911572510696607`*^9, 3.6911572511656704`*^9}, {
+   3.69115735967452*^9, 3.69115736357191*^9}, {3.6912576520324273`*^9, 
+   3.6912576520636272`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"LocNameNetworkedPairs", " ", "=", " ", 
+   RowBox[{"Cases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Count", "[", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"LocNamePairs", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ">", "1"}], ",", 
+         RowBox[{"LocNamePairs", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", "0"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"Length", "[", "LocNamePairs", "]"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"Except", "[", "_Integer", "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NetworkedTallies", " ", "=", " ", 
+   RowBox[{"Cases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Count", "[", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"LocNamePairs", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ">", "1"}], ",", 
+         RowBox[{"Count", "[", 
+          RowBox[{
+           RowBox[{"LocNamePairs", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", "\"\<\>\""}], "]"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"Length", "[", "LocNamePairs", "]"}]}], "}"}]}], "]"}], ",", 
+     "_Integer"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NetworkedLocNameTriples", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{"LocNameNetworkedPairs", ",", "NetworkedTallies"}], "]"}], 
+      "]"}], ",", "3"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanTextDump", "=", 
+   RowBox[{"Import", "[", "\"\<R:\\\\DigHum\\\\Bunyan.txt\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanPartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "BunyanTextDump", "]"}], ",", "7", ",", 
+     "1"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NetworkedNodes", " ", "=", " ", 
+   RowBox[{"Union", "[", 
+    RowBox[{"NetworkedLocNameTriples", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NetworkedNodes", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Riffle", "[", 
+      RowBox[{"NetworkedNodes", ",", 
+       RowBox[{"BunyanPartitioned", "[", 
+        RowBox[{"[", "NetworkedNodes", "]"}], "]"}]}], "]"}], ",", "2"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NetworkedNodes", " ", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"NetworkedNodes", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "\"\<Stephens\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "\"\<Lincoln\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "\"\<Sumner\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "\"\<Seward\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "\"\<Everett\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "\"\<Webster\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"7", ",", "\"\<Calhoun\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "\"\<Clay\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"9", ",", "\"\<Phillips\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "\"\<Douglass\>\""}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanQuotesNoCommas", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{
+       RowBox[{"ToString", "[", 
+        RowBox[{
+         RowBox[{"NetworkedNodes", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "j", "]"}], "]"}], "]"}], ",", 
+       RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", 
+       RowBox[{"Length", "[", "NetworkedNodes", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NetworkedNodes", " ", "=", " ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"\"\<id\>\"", ",", "\"\<name\>\""}], "}"}], "}"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"NetworkedNodes", " ", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+         "BunyanQuotesNoCommas"}], "]"}], ",", "2"}], "]"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+   "\"\<R:\\\\DigHum\\\\NetworkedBunyanNodes.csv\>\"", ",", 
+    "NetworkedNodes"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NetworkedEdges", " ", "=", "  ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"\"\<id1\>\"", ",", "\"\<id2\>\""}], "}"}], "}"}], ",", 
+     "LocNameNetworkedPairs"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+   "\"\<R:\\\\DigHum\\\\NetworkedBunyanEdges.csv\>\"", ",", 
+    "NetworkedEdges"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6910707067620907`*^9, 3.691070727884762*^9}, {
+   3.6910707644516306`*^9, 3.6910707688196864`*^9}, {3.6910709780818644`*^9, 
+   3.691071006162404*^9}, {3.6910710823698697`*^9, 3.6910711632106247`*^9}, {
+   3.691071401942015*^9, 3.6910714132834334`*^9}, {3.691071961718705*^9, 
+   3.691071965821479*^9}, {3.691073526278021*^9, 3.6910735522525206`*^9}, 
+   3.6910745852021823`*^9, 3.691074991793788*^9, {3.691075259838143*^9, 
+   3.6910752686679125`*^9}, 3.6910800224413967`*^9, {3.691081069925293*^9, 
+   3.6910811000024786`*^9}, {3.691081429806307*^9, 3.691081498775791*^9}, 
+   3.6910815364658747`*^9, {3.6910815942802153`*^9, 3.691081634871936*^9}, 
+   3.6910817182862053`*^9, 3.691082197181145*^9, {3.6910827508488436`*^9, 
+   3.691082775871564*^9}, {3.6911572511806717`*^9, 3.6911572512296762`*^9}, {
+   3.691157374999052*^9, 3.6911573764842005`*^9}, {3.6912576520636272`*^9, 
+   3.6912576520792274`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"LocNameAllPairs", " ", "=", " ", 
+   RowBox[{"Cases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Count", "[", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"LocNamePairs", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ">", "0"}], ",", 
+         RowBox[{"LocNamePairs", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", "0"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"Length", "[", "LocNamePairs", "]"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"Except", "[", "_Integer", "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AllTallies", " ", "=", " ", 
+   RowBox[{"Cases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Count", "[", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"LocNamePairs", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ">", "0"}], ",", 
+         RowBox[{"Count", "[", 
+          RowBox[{
+           RowBox[{"LocNamePairs", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"LocNamePairs", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", "\"\<\>\""}], "]"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"Length", "[", "LocNamePairs", "]"}]}], "}"}]}], "]"}], ",", 
+     "_Integer"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AllLocNameTriples", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{"LocNameAllPairs", ",", "AllTallies"}], "]"}], "]"}], ",", 
+     "3"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanTextDump", "=", 
+   RowBox[{"Import", "[", "\"\<R:\\\\DigHum\\\\Bunyan.txt\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanPartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "BunyanTextDump", "]"}], ",", "7", ",", 
+     "1"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AllNodes", " ", "=", " ", 
+   RowBox[{"Union", "[", 
+    RowBox[{"AllLocNameTriples", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AllNodes", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Riffle", "[", 
+      RowBox[{"AllNodes", ",", 
+       RowBox[{"BunyanPartitioned", "[", 
+        RowBox[{"[", "AllNodes", "]"}], "]"}]}], "]"}], ",", "2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AllNodes", " ", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"AllNodes", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "\"\<Stephens\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "\"\<Lincoln\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "\"\<Sumner\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "\"\<Seward\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "\"\<Everett\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "\"\<Webster\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"7", ",", "\"\<Calhoun\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "\"\<Clay\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"9", ",", "\"\<Phillips\>\""}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "\"\<Douglass\>\""}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanQuotesNoCommas", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{
+       RowBox[{"ToString", "[", 
+        RowBox[{
+         RowBox[{"AllNodes", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "j", "]"}], "]"}], "]"}], ",", 
+       RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", 
+       RowBox[{"Length", "[", "AllNodes", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AllNodes", " ", "=", " ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"\"\<id\>\"", ",", "\"\<name\>\""}], "}"}], "}"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{
+         RowBox[{"AllNodes", " ", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+         "BunyanQuotesNoCommas"}], "]"}], ",", "2"}], "]"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<R:\\\\DigHum\\\\AllBunyanNodes.csv\>\"", ",", "AllNodes"}], 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AllEdges", " ", "=", "  ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"\"\<id1\>\"", ",", "\"\<id2\>\""}], "}"}], "}"}], ",", 
+     "LocNameAllPairs"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<R:\\\\DigHum\\\\AllBunyanEdges.csv\>\"", ",", "AllEdges"}], 
+   "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6910707067620907`*^9, 3.691070727884762*^9}, {
+   3.6910707644516306`*^9, 3.6910707688196864`*^9}, {3.6910709780818644`*^9, 
+   3.691071006162404*^9}, {3.6910710823698697`*^9, 3.6910711632106247`*^9}, {
+   3.691071401942015*^9, 3.6910714132834334`*^9}, {3.691071961718705*^9, 
+   3.691071965821479*^9}, {3.691073526278021*^9, 3.6910735522525206`*^9}, 
+   3.6910745852021823`*^9, 3.691074991793788*^9, {3.691075259838143*^9, 
+   3.6910752686679125`*^9}, 3.6910800224413967`*^9, {3.691081069925293*^9, 
+   3.6910811000024786`*^9}, {3.691081429806307*^9, 3.691081498775791*^9}, 
+   3.6910815364658747`*^9, {3.6910815942802153`*^9, 3.691081634871936*^9}, 
+   3.6910817182862053`*^9, 3.691082197181145*^9, {3.6910822367432528`*^9, 
+   3.691082387597186*^9}, {3.6910826453134904`*^9, 3.691082679056723*^9}, {
+   3.6911572512376776`*^9, 3.691157251270681*^9}, {3.691157416207173*^9, 
+   3.6911574175893106`*^9}, {3.6912576520792274`*^9, 3.691257652094827*^9}, {
+   3.6912580835322733`*^9, 3.691258084031473*^9}}]
+},
+WindowSize->{1054, 674},
+WindowMargins->{{Automatic, 312}, {208, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4491, 121, 312, "Input"],
+Cell[5052, 143, 542, 12, 31, "Input"],
+Cell[5597, 157, 3138, 77, 212, "Input"],
+Cell[8738, 236, 6923, 184, 412, "Input"],
+Cell[15664, 422, 6874, 183, 372, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

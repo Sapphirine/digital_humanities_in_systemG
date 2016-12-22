@@ -1,0 +1,835 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28317,        826]
+NotebookOptionsPosition[     26519,        773]
+NotebookOutlinePosition[     26865,        788]
+CellTagsIndexPosition[     26822,        785]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Bunyan.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanPartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "BunyanTextDump", "]"}], ",", "7", ",", 
+     "1"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"StephensTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Stephens.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"StephensTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyStephens", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Stephens\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for Stephens\>\
+\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsStephens", ",", "1"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"LincolnTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Lincoln.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"LincolnTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyLincoln", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsLincoln", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SumnerTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Sumner.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencySumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SumnerTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsSumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencySumner", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencySumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Sumner\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsSumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Sumner\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsSumner", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SewardTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Seward.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencySeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SewardTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsSeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencySeward", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencySeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Seward\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsSeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Seward\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsSeward", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EverettTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Everett.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"EverettTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyEverett", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsEverett", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"WebsterTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Webster.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"WebsterTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyWebster", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsWebster", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CalhounTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Calhoun.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"CalhounTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyCalhoun", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsCalhoun", ",", "1"}], "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DouglassTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Douglass.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanFrequencyDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"DouglassTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"BunyanPartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BunyanMentionsDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BunyanFrequencyDouglass", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "BunyanPartitioned", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanFrequencyDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Bunyan, with repetition, for \
+Douglass\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "BunyanMentionsDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Bunyan, discrete mentions, for Douglass\>\
+\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Position", "[", 
+  RowBox[{"BunyanMentionsDouglass", ",", "1"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6911725541526737`*^9, 3.6911725541526737`*^9}}],
+
+Cell[BoxData["\<\"2 total 7-word references from Bunyan, with repetition, for \
+Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6911731067003107`*^9}],
+
+Cell[BoxData["\<\"2 total 7-word citations from Bunyan, discrete mentions, \
+for Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6911731067003107`*^9}],
+
+Cell[BoxData["\<\"482.7046472 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911731067003107`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "9806", "}"}], ",", 
+   RowBox[{"{", "19152", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911731067003107`*^9}],
+
+Cell[BoxData["\<\"13 total 7-word references from Bunyan, with repetition, \
+for Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.6911754298966413`*^9}],
+
+Cell[BoxData["\<\"10 total 7-word citations from Bunyan, discrete mentions, \
+for Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.6911754298966413`*^9}],
+
+Cell[BoxData["\<\"2323.1651316 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911754298966413`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "19152", "}"}], ",", 
+   RowBox[{"{", "42577", "}"}], ",", 
+   RowBox[{"{", "57113", "}"}], ",", 
+   RowBox[{"{", "57114", "}"}], ",", 
+   RowBox[{"{", "57115", "}"}], ",", 
+   RowBox[{"{", "57116", "}"}], ",", 
+   RowBox[{"{", "88122", "}"}], ",", 
+   RowBox[{"{", "97984", "}"}], ",", 
+   RowBox[{"{", "103547", "}"}], ",", 
+   RowBox[{"{", "106288", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911754298966413`*^9}],
+
+Cell[BoxData["5732560"], "Output",
+ CellChangeTimes->{3.6911754301618414`*^9}],
+
+Cell[BoxData["\<\"42 total 7-word references from Bunyan, with repetition, \
+for Sumner\"\>"], "Output",
+ CellChangeTimes->{3.6911779678757296`*^9}],
+
+Cell[BoxData["\<\"42 total 7-word citations from Bunyan, discrete mentions, \
+for Sumner\"\>"], "Output",
+ CellChangeTimes->{3.69117796789133*^9}],
+
+Cell[BoxData["\<\"2537.5734875 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.69117796789133*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "11074", "}"}], ",", 
+   RowBox[{"{", "17825", "}"}], ",", 
+   RowBox[{"{", "17826", "}"}], ",", 
+   RowBox[{"{", "21670", "}"}], ",", 
+   RowBox[{"{", "21671", "}"}], ",", 
+   RowBox[{"{", "21672", "}"}], ",", 
+   RowBox[{"{", "21679", "}"}], ",", 
+   RowBox[{"{", "21680", "}"}], ",", 
+   RowBox[{"{", "21681", "}"}], ",", 
+   RowBox[{"{", "21682", "}"}], ",", 
+   RowBox[{"{", "21683", "}"}], ",", 
+   RowBox[{"{", "21684", "}"}], ",", 
+   RowBox[{"{", "21685", "}"}], ",", 
+   RowBox[{"{", "21686", "}"}], ",", 
+   RowBox[{"{", "21687", "}"}], ",", 
+   RowBox[{"{", "21694", "}"}], ",", 
+   RowBox[{"{", "21695", "}"}], ",", 
+   RowBox[{"{", "21696", "}"}], ",", 
+   RowBox[{"{", "21697", "}"}], ",", 
+   RowBox[{"{", "21698", "}"}], ",", 
+   RowBox[{"{", "21717", "}"}], ",", 
+   RowBox[{"{", "21718", "}"}], ",", 
+   RowBox[{"{", "21719", "}"}], ",", 
+   RowBox[{"{", "21720", "}"}], ",", 
+   RowBox[{"{", "21721", "}"}], ",", 
+   RowBox[{"{", "21722", "}"}], ",", 
+   RowBox[{"{", "21834", "}"}], ",", 
+   RowBox[{"{", "21860", "}"}], ",", 
+   RowBox[{"{", "21873", "}"}], ",", 
+   RowBox[{"{", "21909", "}"}], ",", 
+   RowBox[{"{", "21920", "}"}], ",", 
+   RowBox[{"{", "21927", "}"}], ",", 
+   RowBox[{"{", "57204", "}"}], ",", 
+   RowBox[{"{", "57205", "}"}], ",", 
+   RowBox[{"{", "71410", "}"}], ",", 
+   RowBox[{"{", "92785", "}"}], ",", 
+   RowBox[{"{", "106984", "}"}], ",", 
+   RowBox[{"{", "106985", "}"}], ",", 
+   RowBox[{"{", "106986", "}"}], ",", 
+   RowBox[{"{", "106995", "}"}], ",", 
+   RowBox[{"{", "106996", "}"}], ",", 
+   RowBox[{"{", "106997", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.69117796789133*^9}],
+
+Cell[BoxData["18446744073709542184"], "Output",
+ CellChangeTimes->{3.691177968062931*^9}],
+
+Cell[BoxData["\<\"4 total 7-word references from Bunyan, with repetition, for \
+Seward\"\>"], "Output",
+ CellChangeTimes->{3.6911795775486174`*^9}],
+
+Cell[BoxData["\<\"4 total 7-word citations from Bunyan, discrete mentions, \
+for Seward\"\>"], "Output",
+ CellChangeTimes->{3.6911795775486174`*^9}],
+
+Cell[BoxData["\<\"1609.3452857 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911795775486174`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "57114", "}"}], ",", 
+   RowBox[{"{", "57115", "}"}], ",", 
+   RowBox[{"{", "57116", "}"}], ",", 
+   RowBox[{"{", "85891", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911795775486174`*^9}],
+
+Cell[BoxData["18446744073709542216"], "Output",
+ CellChangeTimes->{3.6911795777826185`*^9}],
+
+Cell[BoxData["\<\"1 total 7-word references from Bunyan, with repetition, for \
+Everett\"\>"], "Output",
+ CellChangeTimes->{3.6911809396207027`*^9}],
+
+Cell[BoxData["\<\"1 total 7-word citations from Bunyan, discrete mentions, \
+for Everett\"\>"], "Output",
+ CellChangeTimes->{3.6911809396207027`*^9}],
+
+Cell[BoxData["\<\"1361.6976826 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911809396207027`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "67503", "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.6911809396207027`*^9}],
+
+Cell[BoxData["18446744073709542184"], "Output",
+ CellChangeTimes->{3.6911809398235035`*^9}],
+
+Cell[BoxData["\<\"4 total 7-word references from Bunyan, with repetition, for \
+Webster\"\>"], "Output",
+ CellChangeTimes->{3.6911823654864426`*^9}],
+
+Cell[BoxData["\<\"4 total 7-word citations from Bunyan, discrete mentions, \
+for Webster\"\>"], "Output",
+ CellChangeTimes->{3.6911823654864426`*^9}],
+
+Cell[BoxData["\<\"1425.5225380 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911823654864426`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "57113", "}"}], ",", 
+   RowBox[{"{", "57114", "}"}], ",", 
+   RowBox[{"{", "57115", "}"}], ",", 
+   RowBox[{"{", "89421", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911823654864426`*^9}],
+
+Cell[BoxData["18446744073709542208"], "Output",
+ CellChangeTimes->{3.691182365658044*^9}],
+
+Cell[BoxData["\<\"1 total 7-word references from Bunyan, with repetition, for \
+Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6911830005892315`*^9}],
+
+Cell[BoxData["\<\"1 total 7-word citations from Bunyan, discrete mentions, \
+for Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6911830005912313`*^9}],
+
+Cell[BoxData["\<\"634.7871731 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911830005912313`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "19152", "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.6911830005922318`*^9}],
+
+Cell[BoxData["18446744073709542072"], "Output",
+ CellChangeTimes->{3.691183000829255*^9}],
+
+Cell[BoxData["\<\"241 total 7-word references from Bunyan, with repetition, \
+for Douglass\"\>"], "Output",
+ CellChangeTimes->{3.6911832395511246`*^9}],
+
+Cell[BoxData["\<\"3 total 7-word citations from Bunyan, discrete mentions, \
+for Douglass\"\>"], "Output",
+ CellChangeTimes->{3.691183239552125*^9}],
+
+Cell[BoxData["\<\"238.5958572 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911832395531254`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "74371", "}"}], ",", 
+   RowBox[{"{", "74372", "}"}], ",", 
+   RowBox[{"{", "82063", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911832395541253`*^9}]
+}, Open  ]]
+},
+WindowSize->{843, 807},
+WindowMargins->{{Automatic, 236}, {51, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 18765, 537, 2572, "Input"],
+Cell[19348, 561, 149, 2, 31, "Output"],
+Cell[19500, 565, 150, 2, 31, "Output"],
+Cell[19653, 569, 105, 1, 31, "Output"],
+Cell[19761, 572, 172, 5, 31, "Output"],
+Cell[19936, 579, 149, 2, 31, "Output"],
+Cell[20088, 583, 150, 2, 31, "Output"],
+Cell[20241, 587, 106, 1, 31, "Output"],
+Cell[20350, 590, 479, 13, 52, "Output"],
+Cell[20832, 605, 78, 1, 31, "Output"],
+Cell[20913, 608, 148, 2, 31, "Output"],
+Cell[21064, 612, 146, 2, 31, "Output"],
+Cell[21213, 616, 103, 1, 31, "Output"],
+Cell[21319, 619, 1696, 45, 112, "Output"],
+Cell[23018, 666, 89, 1, 31, "Output"],
+Cell[23110, 669, 147, 2, 31, "Output"],
+Cell[23260, 673, 148, 2, 31, "Output"],
+Cell[23411, 677, 106, 1, 64, "Output"],
+Cell[23520, 680, 249, 7, 31, "Output"],
+Cell[23772, 689, 91, 1, 31, "Output"],
+Cell[23866, 692, 148, 2, 31, "Output"],
+Cell[24017, 696, 149, 2, 31, "Output"],
+Cell[24169, 700, 106, 1, 31, "Output"],
+Cell[24278, 703, 121, 3, 31, "Output"],
+Cell[24402, 708, 91, 1, 31, "Output"],
+Cell[24496, 711, 148, 2, 31, "Output"],
+Cell[24647, 715, 149, 2, 31, "Output"],
+Cell[24799, 719, 106, 1, 31, "Output"],
+Cell[24908, 722, 249, 7, 31, "Output"],
+Cell[25160, 731, 89, 1, 31, "Output"],
+Cell[25252, 734, 148, 2, 31, "Output"],
+Cell[25403, 738, 149, 2, 31, "Output"],
+Cell[25555, 742, 105, 1, 31, "Output"],
+Cell[25663, 745, 121, 3, 31, "Output"],
+Cell[25787, 750, 89, 1, 31, "Output"],
+Cell[25879, 753, 151, 2, 31, "Output"],
+Cell[26033, 757, 148, 2, 31, "Output"],
+Cell[26184, 761, 105, 1, 31, "Output"],
+Cell[26292, 764, 211, 6, 31, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

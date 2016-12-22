@@ -1,0 +1,2327 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     80139,       2318]
+NotebookOptionsPosition[     74143,       2139]
+NotebookOutlinePosition[     74485,       2154]
+CellTagsIndexPosition[     74442,       2151]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Shakespeare.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespearePartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "ShakespeareTextDump", "]"}], ",", "7", ",", 
+     "1"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"StephensTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Stephens.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"StephensTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsStephens", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyStephens", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Stephens\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsStephens", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Stephens\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"LincolnTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Lincoln.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"LincolnTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsLincoln", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyLincoln", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsLincoln", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Lincoln\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SumnerTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Sumner.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencySumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SumnerTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsSumner", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencySumner", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencySumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for Sumner\
+\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsSumner", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Sumner\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6910215246816735`*^9, 3.6910215246816735`*^9}}],
+
+Cell[BoxData["\<\"18 total 7-word references from Shakespeare, with \
+repetition, for Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6910247206014366`*^9}],
+
+Cell[BoxData["\<\"14 total 7-word citations from Shakespeare, discrete \
+mentions, for Stephens\"\>"], "Output",
+ CellChangeTimes->{3.6910247206014366`*^9}],
+
+Cell[BoxData["\<\"3142.4492247 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691024720611437*^9}],
+
+Cell[BoxData["\<\"3 total 7-word references from Shakespeare, with \
+repetition, for Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.691040469991833*^9}],
+
+Cell[BoxData["\<\"3 total 7-word citations from Shakespeare, discrete \
+mentions, for Lincoln\"\>"], "Output",
+ CellChangeTimes->{3.691040469991833*^9}],
+
+Cell[BoxData["\<\"15749.6703975 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691040470001834*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910404700818396`*^9}],
+
+Cell[BoxData["41595960"], "Output",
+ CellChangeTimes->{3.6910404717819586`*^9}],
+
+Cell[BoxData["\<\"109 total 7-word references from Shakespeare, with \
+repetition, for Sumner\"\>"], "Output",
+ CellChangeTimes->{3.69105857052288*^9}],
+
+Cell[BoxData["\<\"103 total 7-word citations from Shakespeare, discrete \
+mentions, for Sumner\"\>"], "Output",
+ CellChangeTimes->{3.69105857052288*^9}],
+
+Cell[BoxData["\<\"18098.6909212 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.69105857052288*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"267214", ",", "267215", ",", "267216", ",", "267232"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.691058570622881*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691058570762882*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908867249563274`*^9, 3.690886725698371*^9}, {
+  3.691066689981083*^9, 3.691066692091104*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "189196", "}"}], ",", 
+   RowBox[{"{", "189205", "}"}], ",", 
+   RowBox[{"{", "189206", "}"}], ",", 
+   RowBox[{"{", "267214", "}"}], ",", 
+   RowBox[{"{", "267215", "}"}], ",", 
+   RowBox[{"{", "267216", "}"}], ",", 
+   RowBox[{"{", "267232", "}"}], ",", 
+   RowBox[{"{", "541688", "}"}], ",", 
+   RowBox[{"{", "541689", "}"}], ",", 
+   RowBox[{"{", "541704", "}"}], ",", 
+   RowBox[{"{", "541705", "}"}], ",", 
+   RowBox[{"{", "541706", "}"}], ",", 
+   RowBox[{"{", "570117", "}"}], ",", 
+   RowBox[{"{", "739681", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.691066713781321*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908867249563274`*^9, 3.690886725698371*^9}, {
+  3.691066689981083*^9, 3.691066692091104*^9}, {3.6910667284514675`*^9, 
+  3.691066729551479*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "464638", "}"}], ",", 
+   RowBox[{"{", "514068", "}"}], ",", 
+   RowBox[{"{", "583216", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.691066713781321*^9, 3.6910667307814913`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6908867249563274`*^9, 3.690886725698371*^9}, {
+  3.691066689981083*^9, 3.691066692091104*^9}, {3.6910667284514675`*^9, 
+  3.691066748931672*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "27829", "}"}], ",", 
+   RowBox[{"{", "27830", "}"}], ",", 
+   RowBox[{"{", "174888", "}"}], ",", 
+   RowBox[{"{", "180474", "}"}], ",", 
+   RowBox[{"{", "183643", "}"}], ",", 
+   RowBox[{"{", "183644", "}"}], ",", 
+   RowBox[{"{", "192291", "}"}], ",", 
+   RowBox[{"{", "192332", "}"}], ",", 
+   RowBox[{"{", "192339", "}"}], ",", 
+   RowBox[{"{", "192340", "}"}], ",", 
+   RowBox[{"{", "211029", "}"}], ",", 
+   RowBox[{"{", "265627", "}"}], ",", 
+   RowBox[{"{", "265628", "}"}], ",", 
+   RowBox[{"{", "265629", "}"}], ",", 
+   RowBox[{"{", "267214", "}"}], ",", 
+   RowBox[{"{", "267215", "}"}], ",", 
+   RowBox[{"{", "267216", "}"}], ",", 
+   RowBox[{"{", "267232", "}"}], ",", 
+   RowBox[{"{", "275492", "}"}], ",", 
+   RowBox[{"{", "275493", "}"}], ",", 
+   RowBox[{"{", "275494", "}"}], ",", 
+   RowBox[{"{", "275501", "}"}], ",", 
+   RowBox[{"{", "275502", "}"}], ",", 
+   RowBox[{"{", "275503", "}"}], ",", 
+   RowBox[{"{", "297645", "}"}], ",", 
+   RowBox[{"{", "355995", "}"}], ",", 
+   RowBox[{"{", "357089", "}"}], ",", 
+   RowBox[{"{", "357090", "}"}], ",", 
+   RowBox[{"{", "370971", "}"}], ",", 
+   RowBox[{"{", "378632", "}"}], ",", 
+   RowBox[{"{", "378633", "}"}], ",", 
+   RowBox[{"{", "378634", "}"}], ",", 
+   RowBox[{"{", "397390", "}"}], ",", 
+   RowBox[{"{", "397404", "}"}], ",", 
+   RowBox[{"{", "397405", "}"}], ",", 
+   RowBox[{"{", "397406", "}"}], ",", 
+   RowBox[{"{", "397407", "}"}], ",", 
+   RowBox[{"{", "404706", "}"}], ",", 
+   RowBox[{"{", "404707", "}"}], ",", 
+   RowBox[{"{", "411927", "}"}], ",", 
+   RowBox[{"{", "411928", "}"}], ",", 
+   RowBox[{"{", "412018", "}"}], ",", 
+   RowBox[{"{", "423471", "}"}], ",", 
+   RowBox[{"{", "423472", "}"}], ",", 
+   RowBox[{"{", "423473", "}"}], ",", 
+   RowBox[{"{", "425631", "}"}], ",", 
+   RowBox[{"{", "425632", "}"}], ",", 
+   RowBox[{"{", "425633", "}"}], ",", 
+   RowBox[{"{", "425634", "}"}], ",", 
+   RowBox[{"{", "425845", "}"}], ",", 
+   RowBox[{"{", "425853", "}"}], ",", 
+   RowBox[{"{", "425863", "}"}], ",", 
+   RowBox[{"{", "425864", "}"}], ",", 
+   RowBox[{"{", "425865", "}"}], ",", 
+   RowBox[{"{", "425888", "}"}], ",", 
+   RowBox[{"{", "425889", "}"}], ",", 
+   RowBox[{"{", "425890", "}"}], ",", 
+   RowBox[{"{", "426032", "}"}], ",", 
+   RowBox[{"{", "426039", "}"}], ",", 
+   RowBox[{"{", "426040", "}"}], ",", 
+   RowBox[{"{", "484278", "}"}], ",", 
+   RowBox[{"{", "486350", "}"}], ",", 
+   RowBox[{"{", "486351", "}"}], ",", 
+   RowBox[{"{", "486352", "}"}], ",", 
+   RowBox[{"{", "490523", "}"}], ",", 
+   RowBox[{"{", "491422", "}"}], ",", 
+   RowBox[{"{", "491423", "}"}], ",", 
+   RowBox[{"{", "492390", "}"}], ",", 
+   RowBox[{"{", "492391", "}"}], ",", 
+   RowBox[{"{", "492392", "}"}], ",", 
+   RowBox[{"{", "493855", "}"}], ",", 
+   RowBox[{"{", "499666", "}"}], ",", 
+   RowBox[{"{", "499667", "}"}], ",", 
+   RowBox[{"{", "499668", "}"}], ",", 
+   RowBox[{"{", "499682", "}"}], ",", 
+   RowBox[{"{", "508055", "}"}], ",", 
+   RowBox[{"{", "508056", "}"}], ",", 
+   RowBox[{"{", "508057", "}"}], ",", 
+   RowBox[{"{", "508058", "}"}], ",", 
+   RowBox[{"{", "531772", "}"}], ",", 
+   RowBox[{"{", "531773", "}"}], ",", 
+   RowBox[{"{", "531780", "}"}], ",", 
+   RowBox[{"{", "531781", "}"}], ",", 
+   RowBox[{"{", "535089", "}"}], ",", 
+   RowBox[{"{", "535181", "}"}], ",", 
+   RowBox[{"{", "535182", "}"}], ",", 
+   RowBox[{"{", "544917", "}"}], ",", 
+   RowBox[{"{", "544918", "}"}], ",", 
+   RowBox[{"{", "569836", "}"}], ",", 
+   RowBox[{"{", "569837", "}"}], ",", 
+   RowBox[{"{", "615203", "}"}], ",", 
+   RowBox[{"{", "627167", "}"}], ",", 
+   RowBox[{"{", "627168", "}"}], ",", 
+   RowBox[{"{", "641456", "}"}], ",", 
+   RowBox[{"{", "641457", "}"}], ",", 
+   RowBox[{"{", "644714", "}"}], ",", 
+   RowBox[{"{", "644715", "}"}], ",", 
+   RowBox[{"{", "764206", "}"}], ",", 
+   RowBox[{"{", "785323", "}"}], ",", 
+   RowBox[{"{", "785324", "}"}], ",", 
+   RowBox[{"{", "785325", "}"}], ",", 
+   RowBox[{"{", "870780", "}"}], ",", 
+   RowBox[{"{", "870781", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.691066713781321*^9, 3.6910667504716883`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SewardTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Seward.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencySeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"SewardTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsSeward", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencySeward", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencySeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for Seward\
+\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsSeward", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Seward\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EverettTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Everett.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"EverettTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsEverett", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyEverett", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsEverett", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Everett\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.69106697763396*^9, 3.69106697763396*^9}}],
+
+Cell[BoxData["138904"], "Output",
+ CellChangeTimes->{3.691067035294536*^9}],
+
+Cell[BoxData["\<\"17 total 7-word references from Shakespeare, with \
+repetition, for Seward\"\>"], "Output",
+ CellChangeTimes->{3.691077884279165*^9}],
+
+Cell[BoxData["\<\"17 total 7-word citations from Shakespeare, discrete \
+mentions, for Seward\"\>"], "Output",
+ CellChangeTimes->{3.691077884279165*^9}],
+
+Cell[BoxData["\<\"10848.9346283 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691077884289165*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910778843791656`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691077884529167*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910778846691685`*^9}],
+
+Cell[BoxData["49712"], "Output",
+ CellChangeTimes->{3.691077885469177*^9}],
+
+Cell[BoxData["\<\"23 total 7-word references from Shakespeare, with \
+repetition, for Everett\"\>"], "Output",
+ CellChangeTimes->{3.6910871379423485`*^9}],
+
+Cell[BoxData["\<\"23 total 7-word citations from Shakespeare, discrete \
+mentions, for Everett\"\>"], "Output",
+ CellChangeTimes->{3.6910871379423485`*^9}],
+
+Cell[BoxData["\<\"9252.4031708 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6910871379423485`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "541706", "}"}]], "Output",
+ CellChangeTimes->{3.691087138032349*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691087138172351*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691087138322352*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6910871384623537`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShakespearePartitioned", "[", 
+  RowBox[{"[", "541706", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091679704766*^9, 3.6910917312152805`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"him\"\>", ",", "\<\"that\"\>", ",", "\<\"gives\"\>", 
+   ",", "\<\"and\"\>", ",", "\<\"him\"\>", ",", "\<\"that\"\>", 
+   ",", "\<\"takes.\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6910917187451563`*^9, 3.6910917323652925`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.691091625594225*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "80343", "}"}], ",", 
+   RowBox[{"{", "80344", "}"}], ",", 
+   RowBox[{"{", "171647", "}"}], ",", 
+   RowBox[{"{", "195960", "}"}], ",", 
+   RowBox[{"{", "195961", "}"}], ",", 
+   RowBox[{"{", "195962", "}"}], ",", 
+   RowBox[{"{", "399571", "}"}], ",", 
+   RowBox[{"{", "399589", "}"}], ",", 
+   RowBox[{"{", "399590", "}"}], ",", 
+   RowBox[{"{", "402582", "}"}], ",", 
+   RowBox[{"{", "402583", "}"}], ",", 
+   RowBox[{"{", "402584", "}"}], ",", 
+   RowBox[{"{", "412027", "}"}], ",", 
+   RowBox[{"{", "412028", "}"}], ",", 
+   RowBox[{"{", "412029", "}"}], ",", 
+   RowBox[{"{", "645503", "}"}], ",", 
+   RowBox[{"{", "745295", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6910916271542406`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "199330", "}"}], ",", 
+   RowBox[{"{", "249139", "}"}], ",", 
+   RowBox[{"{", "249161", "}"}], ",", 
+   RowBox[{"{", "249162", "}"}], ",", 
+   RowBox[{"{", "401793", "}"}], ",", 
+   RowBox[{"{", "401814", "}"}], ",", 
+   RowBox[{"{", "401815", "}"}], ",", 
+   RowBox[{"{", "401816", "}"}], ",", 
+   RowBox[{"{", "419868", "}"}], ",", 
+   RowBox[{"{", "421609", "}"}], ",", 
+   RowBox[{"{", "486436", "}"}], ",", 
+   RowBox[{"{", "486437", "}"}], ",", 
+   RowBox[{"{", "486438", "}"}], ",", 
+   RowBox[{"{", "492924", "}"}], ",", 
+   RowBox[{"{", "541706", "}"}], ",", 
+   RowBox[{"{", "544663", "}"}], ",", 
+   RowBox[{"{", "580698", "}"}], ",", 
+   RowBox[{"{", "580699", "}"}], ",", 
+   RowBox[{"{", "636583", "}"}], ",", 
+   RowBox[{"{", "636584", "}"}], ",", 
+   RowBox[{"{", "711963", "}"}], ",", 
+   RowBox[{"{", "836404", "}"}], ",", 
+   RowBox[{"{", "836405", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6910916599045677`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"WebsterTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Webster.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"WebsterTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsWebster", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyWebster", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsWebster", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Webster\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{
+  RowBox[{"Intersection", "[", 
+   RowBox[{
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Position", "[", 
+      RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}], ",", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Position", "[", 
+      RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}]}], "]"}],
+   "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CalhounTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Calhoun.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"CalhounTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsCalhoun", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyCalhoun", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsCalhoun", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Calhoun\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.691092174312714*^9, 3.691092174312714*^9}}],
+
+Cell[BoxData["148744"], "Output",
+ CellChangeTimes->{3.6910922270432415`*^9}],
+
+Cell[BoxData["\<\"28 total 7-word references from Shakespeare, with \
+repetition, for Webster\"\>"], "Output",
+ CellChangeTimes->{3.691101744953699*^9}],
+
+Cell[BoxData["\<\"27 total 7-word citations from Shakespeare, discrete \
+mentions, for Webster\"\>"], "Output",
+ CellChangeTimes->{3.691101744953699*^9}],
+
+Cell[BoxData["\<\"9517.8604573 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.691101744953699*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911017450537*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911017452037015`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691101745343703*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911017454837046`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691101745633706*^9}],
+
+Cell[BoxData["54448"], "Output",
+ CellChangeTimes->{3.691101746453714*^9}],
+
+Cell[BoxData["\<\"0 total 7-word references from Shakespeare, with \
+repetition, for Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6911039781190367`*^9}],
+
+Cell[BoxData["\<\"0 total 7-word citations from Shakespeare, discrete \
+mentions, for Calhoun\"\>"], "Output",
+ CellChangeTimes->{3.6911039781190367`*^9}],
+
+Cell[BoxData["\<\"2231.6053224 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911039781190367`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691103978209038*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911039783590393`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911039784990406`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691103978639042*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911039787890434`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsEverett", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6911069178571978`*^9, 3.691106921167529*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691106922601672*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071448938212`*^9, 3.691107145913862*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "174063", "}"}], ",", 
+   RowBox[{"{", "174064", "}"}], ",", 
+   RowBox[{"{", "174065", "}"}], ",", 
+   RowBox[{"{", "202647", "}"}], ",", 
+   RowBox[{"{", "252279", "}"}], ",", 
+   RowBox[{"{", "252280", "}"}], ",", 
+   RowBox[{"{", "252281", "}"}], ",", 
+   RowBox[{"{", "252294", "}"}], ",", 
+   RowBox[{"{", "252295", "}"}], ",", 
+   RowBox[{"{", "252296", "}"}], ",", 
+   RowBox[{"{", "252297", "}"}], ",", 
+   RowBox[{"{", "252298", "}"}], ",", 
+   RowBox[{"{", "252333", "}"}], ",", 
+   RowBox[{"{", "252334", "}"}], ",", 
+   RowBox[{"{", "252335", "}"}], ",", 
+   RowBox[{"{", "252336", "}"}], ",", 
+   RowBox[{"{", "252337", "}"}], ",", 
+   RowBox[{"{", "252338", "}"}], ",", 
+   RowBox[{"{", "252339", "}"}], ",", 
+   RowBox[{"{", "252340", "}"}], ",", 
+   RowBox[{"{", "252348", "}"}], ",", 
+   RowBox[{"{", "252349", "}"}], ",", 
+   RowBox[{"{", "252350", "}"}], ",", 
+   RowBox[{"{", "381467", "}"}], ",", 
+   RowBox[{"{", "575351", "}"}], ",", 
+   RowBox[{"{", "663872", "}"}], ",", 
+   RowBox[{"{", "663873", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911071484239626`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071587243743`*^9, 3.6911071625245266`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911071638245783`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Shakespeare.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespearePartitioned", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", "ShakespeareTextDump", "]"}], ",", "7", ",", 
+     "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClayTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Clay.txt\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyClay", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"ClayTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsClay", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyClay", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyClay", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for Clay\>\
+\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsClay", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Clay\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"PhillipsTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Phillips.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyPhillips", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"PhillipsTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsPhillips", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyPhillips", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyPhillips", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Phillips\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsPhillips", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Phillips\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DouglassTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Douglass.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"DouglassTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsDouglass", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyDouglass", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Douglass\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsDouglass", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Douglass\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.691107488074974*^9, 3.691107488074974*^9}, {
+  3.6911454929592943`*^9, 3.6911454934692993`*^9}}],
+
+Cell[BoxData["5827056"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.69114553417371*^9}],
+
+Cell[BoxData["\<\"2 total 7-word references from Shakespeare, with \
+repetition, for Clay\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.69114966654602*^9}],
+
+Cell[BoxData["\<\"2 total 7-word citations from Shakespeare, discrete \
+mentions, for Clay\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.69114966654602*^9}],
+
+Cell[BoxData["\<\"4132.2723089 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.69114966654602*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.69114966654602*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691149666626021*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911496667785225`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911496667785225`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691149666828523*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691149666898524*^9}],
+
+Cell[BoxData["35805032"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911496683460393`*^9}],
+
+Cell[BoxData["\<\"17 total 7-word references from Shakespeare, with \
+repetition, for Phillips\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354157426*^9}],
+
+Cell[BoxData["\<\"13 total 7-word citations from Shakespeare, discrete \
+mentions, for Phillips\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354157426*^9}],
+
+Cell[BoxData["\<\"685.6813857 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354167426*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354167426*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911503541974263`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911503542674274`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354337428*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354417429*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911503544874296`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691150354627431*^9}],
+
+Cell[BoxData["55416"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911503554024396`*^9}],
+
+Cell[BoxData["\<\"5181 total 7-word references from Shakespeare, with \
+repetition, for Douglass\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519274608655`*^9}],
+
+Cell[BoxData["\<\"63 total 7-word citations from Shakespeare, discrete \
+mentions, for Douglass\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519274608655`*^9}],
+
+Cell[BoxData["\<\"1571.9784253 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519274608655`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519274608655`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519275308666`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519276108675`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691151927680868*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.691151927750869*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519278308697`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519279708714`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911075838778906`*^9, 3.6911519281208725`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071587243743`*^9, 3.6911071625245266`*^9}, {3.691153036749363*^9, 
+  3.6911530388868866`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "87750", "}"}], ",", 
+   RowBox[{"{", "635056", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911530399568987`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071587243743`*^9, 3.6911071625245266`*^9}, {3.691153036749363*^9, 
+  3.691153051037017*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "176636", "}"}], ",", 
+   RowBox[{"{", "189970", "}"}], ",", 
+   RowBox[{"{", "189971", "}"}], ",", 
+   RowBox[{"{", "189972", "}"}], ",", 
+   RowBox[{"{", "227093", "}"}], ",", 
+   RowBox[{"{", "227094", "}"}], ",", 
+   RowBox[{"{", "227095", "}"}], ",", 
+   RowBox[{"{", "422532", "}"}], ",", 
+   RowBox[{"{", "599271", "}"}], ",", 
+   RowBox[{"{", "599272", "}"}], ",", 
+   RowBox[{"{", "599273", "}"}], ",", 
+   RowBox[{"{", "599274", "}"}], ",", 
+   RowBox[{"{", "599275", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911530520870285`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071587243743`*^9, 3.6911071625245266`*^9}, {3.691153036749363*^9, 
+  3.6911530622171364`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1124", "}"}], ",", 
+   RowBox[{"{", "1125", "}"}], ",", 
+   RowBox[{"{", "1126", "}"}], ",", 
+   RowBox[{"{", "1127", "}"}], ",", 
+   RowBox[{"{", "1201", "}"}], ",", 
+   RowBox[{"{", "1202", "}"}], ",", 
+   RowBox[{"{", "1203", "}"}], ",", 
+   RowBox[{"{", "1204", "}"}], ",", 
+   RowBox[{"{", "1205", "}"}], ",", 
+   RowBox[{"{", "1206", "}"}], ",", 
+   RowBox[{"{", "1231", "}"}], ",", 
+   RowBox[{"{", "1232", "}"}], ",", 
+   RowBox[{"{", "1233", "}"}], ",", 
+   RowBox[{"{", "1234", "}"}], ",", 
+   RowBox[{"{", "1235", "}"}], ",", 
+   RowBox[{"{", "1236", "}"}], ",", 
+   RowBox[{"{", "1237", "}"}], ",", 
+   RowBox[{"{", "1238", "}"}], ",", 
+   RowBox[{"{", "1351", "}"}], ",", 
+   RowBox[{"{", "1359", "}"}], ",", 
+   RowBox[{"{", "1413", "}"}], ",", 
+   RowBox[{"{", "1414", "}"}], ",", 
+   RowBox[{"{", "1415", "}"}], ",", 
+   RowBox[{"{", "1416", "}"}], ",", 
+   RowBox[{"{", "1464", "}"}], ",", 
+   RowBox[{"{", "1465", "}"}], ",", 
+   RowBox[{"{", "1466", "}"}], ",", 
+   RowBox[{"{", "1467", "}"}], ",", 
+   RowBox[{"{", "1468", "}"}], ",", 
+   RowBox[{"{", "1469", "}"}], ",", 
+   RowBox[{"{", "1470", "}"}], ",", 
+   RowBox[{"{", "180471", "}"}], ",", 
+   RowBox[{"{", "180472", "}"}], ",", 
+   RowBox[{"{", "180473", "}"}], ",", 
+   RowBox[{"{", "180474", "}"}], ",", 
+   RowBox[{"{", "180475", "}"}], ",", 
+   RowBox[{"{", "180484", "}"}], ",", 
+   RowBox[{"{", "180485", "}"}], ",", 
+   RowBox[{"{", "180486", "}"}], ",", 
+   RowBox[{"{", "180487", "}"}], ",", 
+   RowBox[{"{", "180488", "}"}], ",", 
+   RowBox[{"{", "215038", "}"}], ",", 
+   RowBox[{"{", "215039", "}"}], ",", 
+   RowBox[{"{", "215040", "}"}], ",", 
+   RowBox[{"{", "215041", "}"}], ",", 
+   RowBox[{"{", "215042", "}"}], ",", 
+   RowBox[{"{", "215043", "}"}], ",", 
+   RowBox[{"{", "215056", "}"}], ",", 
+   RowBox[{"{", "215057", "}"}], ",", 
+   RowBox[{"{", "215058", "}"}], ",", 
+   RowBox[{"{", "215059", "}"}], ",", 
+   RowBox[{"{", "215060", "}"}], ",", 
+   RowBox[{"{", "215061", "}"}], ",", 
+   RowBox[{"{", "215062", "}"}], ",", 
+   RowBox[{"{", "215075", "}"}], ",", 
+   RowBox[{"{", "215076", "}"}], ",", 
+   RowBox[{"{", "215099", "}"}], ",", 
+   RowBox[{"{", "215100", "}"}], ",", 
+   RowBox[{"{", "215101", "}"}], ",", 
+   RowBox[{"{", "215102", "}"}], ",", 
+   RowBox[{"{", "215103", "}"}], ",", 
+   RowBox[{"{", "215104", "}"}], ",", 
+   RowBox[{"{", "215105", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6911530631396465`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShakespearePartitioned", "[", 
+  RowBox[{"[", 
+   RowBox[{"180471", ";;", "180488"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691153074390276*^9, 3.6911530977055244`*^9}, {
+   3.6911531425150223`*^9, 3.691153220008356*^9}, 3.691153265628843*^9, {
+   3.691153297181684*^9, 3.6911533157843847`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"infinite\"\>", ",", "\<\"in\"\>", ",", "\<\"faculties!\"\>", 
+     ",", "\<\"in\"\>", ",", "\<\"form\"\>", ",", "\<\"and\"\>", 
+     ",", "\<\"moving\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"in\"\>", ",", "\<\"faculties!\"\>", ",", "\<\"in\"\>", 
+     ",", "\<\"form\"\>", ",", "\<\"and\"\>", ",", "\<\"moving\"\>", 
+     ",", "\<\"how\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"faculties!\"\>", ",", "\<\"in\"\>", ",", "\<\"form\"\>", 
+     ",", "\<\"and\"\>", ",", "\<\"moving\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"express\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"in\"\>", ",", "\<\"form\"\>", ",", "\<\"and\"\>", 
+     ",", "\<\"moving\"\>", ",", "\<\"how\"\>", ",", "\<\"express\"\>", 
+     ",", "\<\"and\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"form\"\>", ",", "\<\"and\"\>", ",", "\<\"moving\"\>", 
+     ",", "\<\"how\"\>", ",", "\<\"express\"\>", ",", "\<\"and\"\>", 
+     ",", "\<\"admirable!\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"and\"\>", ",", "\<\"moving\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"express\"\>", ",", "\<\"and\"\>", ",", "\<\"admirable!\"\>", 
+     ",", "\<\"in\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"moving\"\>", ",", "\<\"how\"\>", ",", "\<\"express\"\>", 
+     ",", "\<\"and\"\>", ",", "\<\"admirable!\"\>", ",", "\<\"in\"\>", 
+     ",", "\<\"action\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"how\"\>", ",", "\<\"express\"\>", ",", "\<\"and\"\>", 
+     ",", "\<\"admirable!\"\>", ",", "\<\"in\"\>", ",", "\<\"action\"\>", 
+     ",", "\<\"how\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"express\"\>", ",", "\<\"and\"\>", ",", "\<\"admirable!\"\>", 
+     ",", "\<\"in\"\>", ",", "\<\"action\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"like\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"and\"\>", ",", "\<\"admirable!\"\>", ",", "\<\"in\"\>", 
+     ",", "\<\"action\"\>", ",", "\<\"how\"\>", ",", "\<\"like\"\>", 
+     ",", "\<\"an\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"admirable!\"\>", ",", "\<\"in\"\>", ",", "\<\"action\"\>", 
+     ",", "\<\"how\"\>", ",", "\<\"like\"\>", ",", "\<\"an\"\>", 
+     ",", "\<\"angel!\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"in\"\>", ",", "\<\"action\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"like\"\>", ",", "\<\"an\"\>", ",", "\<\"angel!\"\>", 
+     ",", "\<\"in\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"action\"\>", ",", "\<\"how\"\>", ",", "\<\"like\"\>", 
+     ",", "\<\"an\"\>", ",", "\<\"angel!\"\>", ",", "\<\"in\"\>", 
+     ",", "\<\"apprehension\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"how\"\>", ",", "\<\"like\"\>", ",", "\<\"an\"\>", 
+     ",", "\<\"angel!\"\>", ",", "\<\"in\"\>", ",", "\<\"apprehension\"\>", 
+     ",", "\<\"how\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"like\"\>", ",", "\<\"an\"\>", ",", "\<\"angel!\"\>", 
+     ",", "\<\"in\"\>", ",", "\<\"apprehension\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"like\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"an\"\>", ",", "\<\"angel!\"\>", ",", "\<\"in\"\>", 
+     ",", "\<\"apprehension\"\>", ",", "\<\"how\"\>", ",", "\<\"like\"\>", 
+     ",", "\<\"a\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"angel!\"\>", ",", "\<\"in\"\>", ",", "\<\"apprehension\"\>", 
+     ",", "\<\"how\"\>", ",", "\<\"like\"\>", ",", "\<\"a\"\>", 
+     ",", "\<\"god!\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"in\"\>", ",", "\<\"apprehension\"\>", ",", "\<\"how\"\>", 
+     ",", "\<\"like\"\>", ",", "\<\"a\"\>", ",", "\<\"god!\"\>", 
+     ",", "\<\"the\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6911531029910913`*^9, 3.691153107269641*^9}, {
+   3.6911531440325394`*^9, 3.6911531675252924`*^9}, {3.691153202695671*^9, 
+   3.6911532208233643`*^9}, 3.6911532670713587`*^9, {3.691153301341729*^9, 
+   3.691153316524393*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Evaluate", "[", 
+  RowBox[{"Share", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"StartTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"JacksonTextDump", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\rhill\\\\Desktop\\\\DigHum\\\\Jackson.txt\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareFrequencyJackson", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"StringCount", "[", 
+      RowBox[{"JacksonTextDump", ",", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Riffle", "[", 
+         RowBox[{
+          RowBox[{"StringTrim", "[", 
+           RowBox[{
+            RowBox[{"ShakespearePartitioned", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<,\>\"", ",", "\"\<.\>\""}], "}"}]}], "]"}], ",", 
+          "\"\< \>\""}], "]"}], "]"}], ",", 
+       RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ShakespeareMentionsJackson", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ShakespeareFrequencyJackson", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ">", "0"}], ",", "1", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"Length", "[", "ShakespearePartitioned", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareFrequencyJackson", "]"}], "]"}], "<>", 
+  "\"\< total 7-word references from Shakespeare, with repetition, for \
+Jackson\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"ToString", "[", 
+   RowBox[{"Total", "[", "ShakespeareMentionsJackson", "]"}], "]"}], "<>", 
+  "\"\< total 7-word citations from Shakespeare, discrete mentions, for \
+Jackson\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"EndTime", "=", 
+   RowBox[{"SessionTime", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{"RunTime", "=", 
+  RowBox[{
+   RowBox[{"ToString", "[", 
+    RowBox[{"EndTime", "-", "StartTime"}], "]"}], "<>", 
+   "\"\< seconds to run\>\""}]}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsStephens", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsLincoln", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSumner", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsSeward", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsWebster", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsCalhoun", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsClay", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\n", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsPhillips", ",", "1"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Intersection", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"ShakespeareMentionsDouglass", ",", "1"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6911535313698854`*^9, 3.6911535462000475`*^9}}],
+
+Cell[BoxData["86672"], "Output",
+ CellChangeTimes->{3.691153554502638*^9}],
+
+Cell[BoxData["\<\"0 total 7-word references from Shakespeare, with \
+repetition, for Jackson\"\>"], "Output",
+ CellChangeTimes->{3.6911551421987314`*^9}],
+
+Cell[BoxData["\<\"0 total 7-word citations from Shakespeare, discrete \
+mentions, for Jackson\"\>"], "Output",
+ CellChangeTimes->{3.6911551422017317`*^9}],
+
+Cell[BoxData["\<\"1587.5970865 seconds to run\"\>"], "Output",
+ CellChangeTimes->{3.6911551422027316`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911551422817397`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911551423397417`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911551424097424`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691155142479743*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691155142559744*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911551426297445`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691155142779746*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911551429097476`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.691155143062249*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"ShakespeareMentionsJackson", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691091624664215*^9, 3.6910916561845303`*^9}, {
+  3.6911071587243743`*^9, 3.6911071625245266`*^9}, {3.691153036749363*^9, 
+  3.6911530622171364`*^9}, {3.691155513765788*^9, 3.691155514815799*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6911555161258144`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShakespearePartitioned", "[", 
+  RowBox[{"[", "541706", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6911614884311523`*^9, 3.691161520383997*^9}, {
+  3.691164371213484*^9, 3.6911643731837797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"him\"\>", ",", "\<\"that\"\>", ",", "\<\"gives\"\>", 
+   ",", "\<\"and\"\>", ",", "\<\"him\"\>", ",", "\<\"that\"\>", 
+   ",", "\<\"takes.\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.691161490251172*^9, 3.6911615215715103`*^9}, 
+   3.691164374141423*^9}]
+}, Open  ]]
+},
+WindowSize->{915, 632},
+WindowMargins->{{Automatic, 921}, {169, Automatic}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (June 2, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 8116, 228, 1032, "Input"],
+Cell[8698, 252, 155, 2, 31, "Output"],
+Cell[8856, 256, 156, 2, 31, "Output"],
+Cell[9015, 260, 104, 1, 31, "Output"],
+Cell[9122, 263, 151, 2, 31, "Output"],
+Cell[9276, 267, 152, 2, 31, "Output"],
+Cell[9431, 271, 105, 1, 31, "Output"],
+Cell[9539, 274, 89, 2, 31, "Output"],
+Cell[9631, 278, 79, 1, 31, "Output"],
+Cell[9713, 281, 151, 2, 31, "Output"],
+Cell[9867, 285, 152, 2, 31, "Output"],
+Cell[10022, 289, 104, 1, 31, "Output"],
+Cell[10129, 292, 158, 4, 31, "Output"],
+Cell[10290, 298, 87, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10414, 305, 227, 4, 31, "Input"],
+Cell[10644, 311, 641, 17, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11322, 333, 277, 5, 31, "Input"],
+Cell[11602, 340, 238, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11877, 351, 276, 5, 31, "Input"],
+Cell[12156, 358, 4136, 106, 232, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16329, 469, 6859, 192, 892, "Input"],
+Cell[23191, 663, 75, 1, 31, "Output"],
+Cell[23269, 666, 151, 2, 31, "Output"],
+Cell[23423, 670, 152, 2, 31, "Output"],
+Cell[23578, 674, 105, 1, 31, "Output"],
+Cell[23686, 677, 89, 2, 31, "Output"],
+Cell[23778, 681, 87, 2, 31, "Output"],
+Cell[23868, 685, 89, 2, 31, "Output"],
+Cell[23960, 689, 74, 1, 31, "Output"],
+Cell[24037, 692, 154, 2, 31, "Output"],
+Cell[24194, 696, 155, 2, 31, "Output"],
+Cell[24352, 700, 106, 1, 31, "Output"],
+Cell[24461, 703, 97, 2, 31, "Output"],
+Cell[24561, 707, 87, 2, 31, "Output"],
+Cell[24651, 711, 87, 2, 31, "Output"],
+Cell[24741, 715, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24867, 722, 171, 3, 31, "Input"],
+Cell[25041, 727, 278, 5, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25356, 737, 174, 3, 31, "Input"],
+Cell[25533, 742, 758, 20, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26328, 767, 177, 3, 31, "Input"],
+Cell[26508, 772, 994, 26, 72, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27539, 803, 7879, 220, 1032, "Input"],
+Cell[35421, 1025, 77, 1, 31, "Output"],
+Cell[35501, 1028, 152, 2, 31, "Output"],
+Cell[35656, 1032, 153, 2, 31, "Output"],
+Cell[35812, 1036, 104, 1, 31, "Output"],
+Cell[35919, 1039, 85, 2, 31, "Output"],
+Cell[36007, 1043, 89, 2, 31, "Output"],
+Cell[36099, 1047, 87, 2, 31, "Output"],
+Cell[36189, 1051, 89, 2, 31, "Output"],
+Cell[36281, 1055, 87, 2, 31, "Output"],
+Cell[36371, 1059, 74, 1, 31, "Output"],
+Cell[36448, 1062, 153, 2, 31, "Output"],
+Cell[36604, 1066, 154, 2, 31, "Output"],
+Cell[36761, 1070, 106, 1, 31, "Output"],
+Cell[36870, 1073, 87, 2, 31, "Output"],
+Cell[36960, 1077, 89, 2, 31, "Output"],
+Cell[37052, 1081, 89, 2, 31, "Output"],
+Cell[37144, 1085, 87, 2, 31, "Output"],
+Cell[37234, 1089, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37360, 1096, 405, 10, 52, "Input"],
+Cell[37768, 1108, 87, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37892, 1115, 228, 4, 31, "Input"],
+Cell[38123, 1121, 1150, 30, 72, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39310, 1156, 230, 4, 31, "Input"],
+Cell[39543, 1162, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39669, 1169, 14081, 395, 1792, "Input"],
+Cell[53753, 1566, 99, 1, 31, "Output"],
+Cell[53855, 1569, 171, 2, 31, "Output"],
+Cell[54029, 1573, 172, 2, 31, "Output"],
+Cell[54204, 1577, 127, 1, 31, "Output"],
+Cell[54334, 1580, 110, 2, 31, "Output"],
+Cell[54447, 1584, 111, 2, 31, "Output"],
+Cell[54561, 1588, 113, 2, 31, "Output"],
+Cell[54677, 1592, 113, 2, 31, "Output"],
+Cell[54793, 1596, 111, 2, 31, "Output"],
+Cell[54907, 1600, 111, 2, 31, "Output"],
+Cell[55021, 1604, 103, 1, 31, "Output"],
+Cell[55127, 1607, 177, 2, 31, "Output"],
+Cell[55307, 1611, 178, 2, 31, "Output"],
+Cell[55488, 1615, 127, 1, 31, "Output"],
+Cell[55618, 1618, 111, 2, 31, "Output"],
+Cell[55732, 1622, 113, 2, 31, "Output"],
+Cell[55848, 1626, 113, 2, 31, "Output"],
+Cell[55964, 1630, 111, 2, 31, "Output"],
+Cell[56078, 1634, 111, 2, 31, "Output"],
+Cell[56192, 1638, 113, 2, 31, "Output"],
+Cell[56308, 1642, 111, 2, 31, "Output"],
+Cell[56422, 1646, 100, 1, 31, "Output"],
+Cell[56525, 1649, 181, 2, 31, "Output"],
+Cell[56709, 1653, 180, 2, 31, "Output"],
+Cell[56892, 1657, 130, 1, 31, "Output"],
+Cell[57025, 1660, 113, 2, 31, "Output"],
+Cell[57141, 1664, 113, 2, 31, "Output"],
+Cell[57257, 1668, 113, 2, 31, "Output"],
+Cell[57373, 1672, 111, 2, 31, "Output"],
+Cell[57487, 1676, 111, 2, 31, "Output"],
+Cell[57601, 1680, 113, 2, 31, "Output"],
+Cell[57717, 1684, 113, 2, 31, "Output"],
+Cell[57833, 1688, 113, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57983, 1695, 278, 5, 31, "Input"],
+Cell[58264, 1702, 174, 5, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[58475, 1712, 280, 5, 31, "Input"],
+Cell[58758, 1719, 604, 16, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59399, 1740, 282, 5, 31, "Input"],
+Cell[59684, 1747, 2492, 66, 132, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62213, 1818, 327, 6, 31, "Input"],
+Cell[62543, 1826, 3944, 78, 192, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[66524, 1909, 5264, 146, 672, "Input"],
+Cell[71791, 2057, 74, 1, 31, "Output"],
+Cell[71868, 2060, 153, 2, 31, "Output"],
+Cell[72024, 2064, 154, 2, 31, "Output"],
+Cell[72181, 2068, 106, 1, 31, "Output"],
+Cell[72290, 2071, 89, 2, 31, "Output"],
+Cell[72382, 2075, 89, 2, 31, "Output"],
+Cell[72474, 2079, 89, 2, 31, "Output"],
+Cell[72566, 2083, 87, 2, 31, "Output"],
+Cell[72656, 2087, 87, 2, 31, "Output"],
+Cell[72746, 2091, 89, 2, 31, "Output"],
+Cell[72838, 2095, 87, 2, 31, "Output"],
+Cell[72928, 2099, 89, 2, 31, "Output"],
+Cell[73020, 2103, 87, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73144, 2110, 327, 5, 31, "Input"],
+Cell[73474, 2117, 89, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73600, 2124, 222, 4, 31, "Input"],
+Cell[73825, 2130, 302, 6, 63, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
