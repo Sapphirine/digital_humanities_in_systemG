@@ -1,2 +1,6 @@
 # digital_humanities_in_systemG
-EECS 6893 Final Project for Bob Hill: rch2130(uni)/201612-41(groupid)
+
+The source code consists of three sections:
+1)Data processing in Mathematica
+2)Graph preparation, for injection into System, also in Mathematica
+3)Limited sample demonstration of step 1), but using Spark/Jupyter
